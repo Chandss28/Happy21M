@@ -1,0 +1,1765 @@
+/* ==========================================================================
+   BIRTHDAY M — 21st Scrapbook Digital Theme (Pink & Denim Blue Edition)
+   Mobile-First & Responsive Design System
+   Palette: Dusty Pink (#D98B98, #F4C7D0) & Denim Blue (#4A7C9D, #C7DFF0)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties / Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paper & Base Tones */
+  --bg-ivory: #faf7f2;
+  --bg-cream: #f4efe6;
+  --bg-beige: #eadccb;
+  --paper-white: #ffffff;
+  --paper-ruled: rgba(74, 124, 157, 0.14);
+
+  /* Denim Blue Palette */
+  --denim-900: #1b3547;
+  --denim-800: #2a4c66;
+  --denim-700: #3b6582;
+  --denim-primary: #4a7c9d;
+  --denim-light: #6e9bb9;
+  --denim-soft: #cfe3f2;
+  --denim-pale: #e6f1f9;
+
+  /* Dusty Pink Palette */
+  --pink-primary: #d98b98;
+  --pink-dark: #b56775;
+  --pink-light: #e8a8b3;
+  --pink-soft: #f7dce2;
+  --pink-pale: #fceef1;
+
+  /* Ink / Text Colors */
+  --ink-heading: #233544;
+  --ink-body: #34302e;
+  --ink-muted: #5a534e;
+  --ink-faint: #7c746e;
+
+  /* Accents & Shadows */
+  --gold-warm: #d4a359;
+  --gold-soft: #fdf3df;
+  --shadow-polaroid: 0 14px 32px -6px rgba(42, 65, 90, 0.18), 0 6px 14px -3px rgba(181, 103, 117, 0.12);
+  --shadow-lifted: 0 22px 48px -8px rgba(35, 53, 68, 0.22), 0 8px 20px -4px rgba(181, 103, 117, 0.15);
+  --shadow-subtle: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+  /* Typography */
+  --font-hand: 'Caveat', 'Sacramento', cursive;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Layout */
+  --max-w-content: 1120px;
+  --max-w-narrow: 760px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Pink + Blue Theme Background (iOS & Android Mobile Safe)
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #f3e4ea;
+  color: var(--ink-body);
+  line-height: 1.68;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Fixed Mobile-Safe Pink & Blue Gradient + Orbs Layer (Smooth 60fps on iOS/Android) */
+.bg-decor-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #f4dce3;
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(217, 139, 152, 0.48) 0%, transparent 45%),
+    radial-gradient(circle at 92% 18%, rgba(74, 124, 157, 0.44) 0%, transparent 48%),
+    radial-gradient(circle at 15% 58%, rgba(74, 124, 157, 0.38) 0%, transparent 50%),
+    radial-gradient(circle at 88% 65%, rgba(217, 139, 152, 0.46) 0%, transparent 48%),
+    radial-gradient(circle at 50% 92%, rgba(74, 124, 157, 0.4) 0%, transparent 52%),
+    linear-gradient(135deg, #f9dbe3 0%, #e1eef9 32%, #f7dfe6 65%, #d3e7f6 100%);
+}
+
+/* Dual-tone Pink & Blue Scrapbook Paper Grid + Polka Texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(217, 139, 152, 0.17) 1.25px, transparent 1.25px),
+    radial-gradient(rgba(74, 124, 157, 0.16) 1.25px, transparent 1.25px),
+    linear-gradient(rgba(74, 124, 157, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 139, 152, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px, 36px 36px, 28px 28px, 28px 28px;
+  background-position: 0 0, 18px 18px, 0 0, 0 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Decorative Top Gingham Scrapbook Trim on Page */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pink-primary) 0px,
+    var(--pink-primary) 24px,
+    #ffffff 24px,
+    #ffffff 36px,
+    var(--denim-primary) 36px,
+    var(--denim-primary) 60px,
+    #ffffff 60px,
+    #ffffff 72px
+  );
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(42, 76, 102, 0.15);
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.55;
+}
+
+.bg-orb-pink-1 {
+  width: 380px;
+  height: 380px;
+  top: -80px;
+  left: -90px;
+  background: radial-gradient(circle, #eca2b0 0%, rgba(236, 162, 176, 0) 70%);
+}
+
+.bg-orb-blue-1 {
+  width: 420px;
+  height: 420px;
+  top: 40px;
+  right: -110px;
+  background: radial-gradient(circle, #7fb2d3 0%, rgba(127, 178, 211, 0) 70%);
+}
+
+.bg-orb-pink-2 {
+  width: 440px;
+  height: 440px;
+  bottom: 12%;
+  right: -100px;
+  background: radial-gradient(circle, #eba0ae 0%, rgba(235, 160, 174, 0) 70%);
+}
+
+.bg-orb-blue-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -90px;
+  left: -80px;
+  background: radial-gradient(circle, #82b4d4 0%, rgba(130, 180, 212, 0) 70%);
+}
+
+.bg-orb-center {
+  width: 520px;
+  height: 520px;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, rgba(236, 162, 176, 0.38), rgba(127, 178, 211, 0.38));
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, a {
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Utility & Scrapbook Decorative Elements
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-w-content);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+.container-narrow {
+  max-width: var(--max-w-narrow);
+}
+
+/* Scrapbook Divider Between Sections */
+.scrapbook-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.divider-line {
+  flex: 1;
+  height: 3px;
+  border-radius: 99px;
+}
+
+.line-pink {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pink-primary) 0px,
+    var(--pink-primary) 8px,
+    transparent 8px,
+    transparent 14px
+  );
+}
+
+.line-blue {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--denim-primary) 0px,
+    var(--denim-primary) 8px,
+    transparent 8px,
+    transparent 14px
+  );
+}
+
+.divider-badge {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px dashed var(--pink-primary);
+  box-shadow: 0 4px 12px rgba(74, 124, 157, 0.14);
+  padding: 0.3rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+/* Section Header Styles */
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--denim-800);
+  background: linear-gradient(135deg, var(--pink-soft), var(--denim-soft));
+  padding: 0.4rem 1.3rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.85rem;
+  box-shadow: 0 3px 10px rgba(74, 124, 157, 0.18);
+  border: 1.5px dashed rgba(74, 124, 157, 0.45);
+  transform: rotate(-1.5deg);
+}
+
+.section-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.35rem, 5.2vw, 3.5rem);
+  font-weight: 700;
+  color: var(--denim-900);
+  line-height: 1.18;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.7);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Realistic Torn-Edge Washi Tape (Pure CSS Clip-Path) */
+.washi-tape {
+  position: absolute;
+  height: 28px;
+  width: 98px;
+  opacity: 0.94;
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  clip-path: polygon(
+    0% 3px, 6px 0%, 14px 3px, 22px 1px, 30px 4px, 40px 1px, 50px 3px, 62px 0%, 74px 3px, 86px 1px, 100% 3px,
+    100% calc(100% - 3px), 94% 100%, 84% calc(100% - 2px), 74% 100%, 62% calc(100% - 3px), 50% 100%, 38% calc(100% - 2px), 26% 100%, 14% calc(100% - 3px), 0% calc(100% - 2px)
+  );
+}
+
+.tape-denim {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(74, 124, 157, 0.72),
+    rgba(74, 124, 157, 0.72) 6px,
+    rgba(216, 230, 241, 0.82) 6px,
+    rgba(216, 230, 241, 0.82) 12px
+  );
+}
+
+.tape-pink {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(217, 139, 152, 0.75),
+    rgba(217, 139, 152, 0.75) 6px,
+    rgba(248, 231, 234, 0.85) 6px,
+    rgba(248, 231, 234, 0.85) 12px
+  );
+}
+
+/* Tape Positions */
+.tape-top-center {
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+}
+.tape-top-left {
+  top: -12px;
+  left: 16px;
+  transform: rotate(-12deg);
+}
+.tape-top-right {
+  top: -12px;
+  right: 16px;
+  transform: rotate(14deg);
+}
+
+/* Floating Scrapbook Sticker Accents */
+.scrapbook-sticker {
+  position: absolute;
+  pointer-events: none;
+  z-index: 4;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+  user-select: none;
+}
+
+.sticker-ribbon-hero {
+  top: -26px;
+  left: -22px;
+  width: 68px;
+  transform: rotate(-16deg);
+}
+
+.sticker-balloon-hero {
+  bottom: 95px;
+  right: -28px;
+  width: 62px;
+  transform: rotate(10deg);
+}
+
+.sticker-bouquet-hero {
+  bottom: -18px;
+  right: 18px;
+  width: 58px;
+  transform: rotate(-8deg);
+}
+
+/* --------------------------------------------------------------------------
+   4. Floating Sticky Navigation Bar & Ambient Music Button
+   -------------------------------------------------------------------------- */
+.site-nav-wrapper {
+  position: sticky;
+  top: 0.9rem;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 0.75rem;
+  pointer-events: none;
+}
+
+.site-nav {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.6rem;
+  background: linear-gradient(135deg, rgba(255, 246, 248, 0.95), rgba(242, 248, 253, 0.95));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(217, 139, 152, 0.48);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 30px -4px rgba(42, 76, 102, 0.18), 0 2px 10px rgba(217, 139, 152, 0.15);
+  transition: var(--transition-normal);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-heading);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-pill);
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: linear-gradient(135deg, var(--denim-soft), var(--pink-soft));
+  color: var(--denim-900);
+  box-shadow: 0 2px 8px rgba(74, 124, 157, 0.15);
+}
+
+/* Ambient Music Toggle Button */
+.nav-btn-music {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #ffffff;
+  color: var(--denim-900);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(74, 124, 157, 0.35);
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-btn-music.playing {
+  background: var(--pink-soft);
+  color: var(--pink-dark);
+  border-color: var(--pink-primary);
+}
+
+.nav-btn-music:hover {
+  transform: translateY(-1px);
+}
+
+.nav-btn-confetti {
+  background: linear-gradient(135deg, var(--pink-primary), var(--denim-primary));
+  color: #fff;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 3px 12px rgba(217, 139, 152, 0.42);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.nav-btn-confetti:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(74, 124, 157, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero Section
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding: 3rem 0 3.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  align-items: center;
+  gap: 3.25rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.82) 0%, rgba(252, 236, 241, 0.86) 50%, rgba(226, 239, 250, 0.88) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  outline: 2px dashed rgba(217, 139, 152, 0.45);
+  outline-offset: -10px;
+  border-radius: 28px;
+  padding: 3rem 2.75rem;
+  box-shadow: var(--shadow-lifted);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-greeting {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, var(--pink-soft), var(--denim-soft));
+  color: var(--denim-900);
+  font-family: var(--font-hand);
+  font-size: 1.38rem;
+  font-weight: 700;
+  padding: 0.4rem 1.25rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px dashed rgba(217, 139, 152, 0.65);
+  margin-bottom: 1.15rem;
+  box-shadow: 0 3px 10px rgba(217, 139, 152, 0.2);
+  transform: rotate(-1.5deg);
+}
+
+.hero-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.85rem, 6.2vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: var(--denim-900);
+  margin-bottom: 1.15rem;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+.hero-title .title-accent {
+  color: var(--denim-primary);
+  display: inline-block;
+}
+
+.hero-title .title-pink {
+  color: var(--pink-dark);
+}
+
+.hero-description {
+  font-size: 1.08rem;
+  color: var(--ink-body);
+  line-height: 1.74;
+  margin-bottom: 1.35rem;
+  max-width: 520px;
+}
+
+/* Theme Pills (Pink & Blue Highlights) */
+.hero-theme-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.8rem;
+}
+
+.theme-pill {
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pill-pink {
+  background: var(--pink-soft);
+  color: var(--pink-dark);
+  border: 1px solid rgba(217, 139, 152, 0.5);
+}
+
+.pill-blue {
+  background: var(--denim-soft);
+  color: var(--denim-800);
+  border: 1px solid rgba(74, 124, 157, 0.45);
+}
+
+.pill-mix {
+  background: linear-gradient(135deg, var(--pink-pale), var(--denim-pale));
+  color: var(--denim-900);
+  border: 1px solid rgba(181, 103, 117, 0.35);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1.9rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: linear-gradient(135deg, var(--pink-dark), var(--denim-primary));
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 48px;
+  padding: 0.9rem 1.85rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(74, 124, 157, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(181, 103, 117, 0.45);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--denim-900);
+  font-weight: 600;
+  font-size: 0.98rem;
+  min-height: 48px;
+  padding: 0.88rem 1.6rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(74, 124, 157, 0.38);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--pink-pale), var(--denim-pale));
+  border-color: var(--pink-primary);
+}
+
+.hero-sticky-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #fff6f8 0%, #f0f7fc 100%);
+  padding: 0.95rem 1.4rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(74, 124, 157, 0.12);
+  border: 1.5px dashed rgba(217, 139, 152, 0.6);
+  transform: rotate(1deg);
+  position: relative;
+  max-width: 470px;
+}
+
+.hero-sticky-note::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 32px;
+  width: 60px;
+  height: 18px;
+  background: rgba(74, 124, 157, 0.45);
+  transform: rotate(-3deg);
+}
+
+.hero-sticky-note p {
+  font-family: var(--font-hand);
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: var(--denim-900);
+  line-height: 1.35;
+}
+
+/* Hero Poster Showcase */
+.hero-showcase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-polaroid-frame {
+  position: relative;
+  background: linear-gradient(180deg, #ffffff 0%, #fcf6f8 100%);
+  padding: 14px 14px 50px 14px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-lifted);
+  border: 2px solid rgba(217, 139, 152, 0.45);
+  transform: rotate(2deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  max-width: 395px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.hero-polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 26px 54px -10px rgba(42, 76, 102, 0.28);
+}
+
+.hero-polaroid-frame:focus-visible {
+  outline: 3px solid var(--denim-primary);
+  outline-offset: 4px;
+}
+
+.hero-poster-wrapper {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 124, 157, 0.18);
+}
+
+.hero-poster-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.poster-zoom-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(35, 53, 68, 0.8);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0.92;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hero-polaroid-frame:hover .poster-zoom-hint {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.hero-polaroid-caption {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--denim-800);
+}
+
+.badge-stamp-21 {
+  position: absolute;
+  top: -24px;
+  right: -20px;
+  width: 84px;
+  height: 84px;
+  background: linear-gradient(135deg, var(--pink-soft), #ffffff, var(--denim-soft));
+  border: 2px dashed var(--pink-dark);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(217, 139, 152, 0.35);
+  transform: rotate(12deg);
+  z-index: 5;
+  animation: floatSubtle 4s ease-in-out infinite alternate;
+}
+
+.badge-stamp-21 span:first-child {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--denim-800);
+}
+
+.badge-stamp-21 span:last-child {
+  font-family: var(--font-hand);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pink-dark);
+}
+
+.badge-tag-special {
+  position: absolute;
+  bottom: 62px;
+  left: -26px;
+  background: linear-gradient(135deg, #ffffff, var(--denim-pale));
+  padding: 0.5rem 1.05rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(42, 76, 102, 0.16);
+  border: 1.5px solid var(--denim-light);
+  transform: rotate(-9deg);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--denim-800);
+}
+
+/* --------------------------------------------------------------------------
+   6. Lightbox Modal (Poster Fullscreen Preview)
+   -------------------------------------------------------------------------- */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 42, 56, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content-box {
+  position: relative;
+  background: linear-gradient(145deg, #fff8fa, #f2f8fd);
+  padding: 16px 16px 20px 16px;
+  border-radius: 14px;
+  border: 2px solid rgba(217, 139, 152, 0.5);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  max-width: 540px;
+  width: 100%;
+  max-height: 92vh;
+  max-height: 92dvh;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.lightbox-modal.active .lightbox-content-box {
+  transform: scale(1);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border: 1.5px solid var(--pink-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--denim-900);
+  font-size: 1.15rem;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  transition: var(--transition-fast);
+}
+
+.lightbox-close-btn:hover {
+  background: var(--pink-soft);
+  color: var(--pink-dark);
+  transform: rotate(90deg);
+}
+
+.lightbox-image-wrapper {
+  flex: 1;
+  min-height: 220px;
+  max-height: 72vh;
+  max-height: 72dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--pink-pale), var(--denim-pale));
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.lightbox-image-wrapper img {
+  max-width: 100%;
+  max-height: 72vh;
+  max-height: 72dvh;
+  object-fit: contain;
+  user-select: none;
+}
+
+.lightbox-info-bar {
+  margin-top: 0.85rem;
+  padding: 0 0.5rem;
+  text-align: center;
+}
+
+.lightbox-title {
+  font-family: var(--font-hand);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--denim-900);
+  margin-bottom: 0.15rem;
+}
+
+.lightbox-caption {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   7. Birthday Letter Section & Realistic Envelope Animation
+   -------------------------------------------------------------------------- */
+.letter-section {
+  padding: 3.75rem 0 4.25rem;
+  position: relative;
+}
+
+/* 3D Envelope Box */
+.envelope-box {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(252, 235, 240, 0.93) 52%, rgba(224, 239, 250, 0.95) 100%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lifted);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  outline: 2px dashed rgba(74, 124, 157, 0.45);
+  outline-offset: -10px;
+  padding: 3.25rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.envelope-seal {
+  width: 78px;
+  height: 78px;
+  background: radial-gradient(circle at 35% 35%, var(--pink-primary), var(--denim-primary));
+  border-radius: 50%;
+  margin: 0 auto 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(181, 103, 117, 0.4);
+  border: 2.5px solid #ffffff;
+  color: #ffffff;
+  font-size: 1.9rem;
+  transition: transform 0.3s ease;
+}
+
+.envelope-box:hover .envelope-seal {
+  transform: scale(1.06) rotate(5deg);
+}
+
+.envelope-heading {
+  font-family: var(--font-hand);
+  font-size: 2.45rem;
+  font-weight: 700;
+  color: var(--denim-900);
+  margin-bottom: 0.5rem;
+}
+
+.envelope-teaser-text {
+  font-size: 1.04rem;
+  color: var(--ink-muted);
+  max-width: 520px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.62;
+}
+
+.btn-open-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--pink-dark), var(--denim-primary));
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  min-height: 50px;
+  padding: 0.95rem 2.25rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(74, 124, 157, 0.38);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-open-letter:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(181, 103, 117, 0.48);
+}
+
+/* Expanded Letter Paper (Silky Reveal Animation) */
+.letter-paper-wrapper {
+  display: none;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.letter-paper-wrapper.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.letter-paper {
+  background-color: #fffcfd;
+  border: 2px solid rgba(217, 139, 152, 0.55);
+  outline: 2px dashed rgba(74, 124, 157, 0.38);
+  outline-offset: -10px;
+  border-radius: 18px;
+  padding: 3.25rem 3.5rem;
+  box-shadow: var(--shadow-lifted);
+  position: relative;
+  background-image:
+    linear-gradient(rgba(74, 124, 157, 0.13) 1px, transparent 1px),
+    radial-gradient(circle at top left, rgba(247, 220, 226, 0.52), transparent 48%),
+    radial-gradient(circle at bottom right, rgba(207, 227, 242, 0.55), transparent 48%);
+  background-size: 100% 32px, 100% 100%, 100% 100%;
+  line-height: 32px;
+}
+
+.paper-stamp {
+  position: absolute;
+  top: 2rem;
+  right: 2.2rem;
+  width: 74px;
+  height: 86px;
+  border: 2px dashed var(--denim-primary);
+  background: linear-gradient(135deg, var(--pink-pale), var(--denim-pale));
+  border-radius: 6px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(74, 124, 157, 0.12);
+  transform: rotate(3deg);
+}
+
+.paper-stamp span:first-child {
+  font-size: 1.25rem;
+}
+
+.paper-stamp span:last-child {
+  font-family: var(--font-hand);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--denim-800);
+  line-height: 1.05;
+}
+
+.letter-salutation {
+  font-family: var(--font-hand);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--denim-900);
+  margin-bottom: 1.5rem;
+}
+
+.letter-body p {
+  font-size: 1.05rem;
+  color: var(--ink-body);
+  margin-bottom: 1.6rem;
+  text-align: left;
+  line-height: 32px;
+}
+
+.letter-signature {
+  margin-top: 2.25rem;
+  text-align: right;
+  font-family: var(--font-hand);
+}
+
+.letter-signature .sig-closing {
+  font-size: 1.4rem;
+  color: var(--ink-muted);
+}
+
+.letter-signature .sig-name {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--pink-dark);
+}
+
+.letter-actions-bottom {
+  margin-top: 2.25rem;
+  text-align: center;
+}
+
+.btn-close-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--pink-soft), var(--denim-soft));
+  color: var(--denim-900);
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-height: 46px;
+  padding: 0.72rem 1.7rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(74, 124, 157, 0.35);
+  transition: var(--transition-fast);
+}
+
+.btn-close-letter:hover {
+  background: #ffffff;
+  color: var(--pink-dark);
+  border-color: var(--pink-primary);
+}
+
+/* --------------------------------------------------------------------------
+   8. Make a Wish & Interactive Candle Section
+   -------------------------------------------------------------------------- */
+.celebration-section {
+  padding: 3.75rem 0 4.25rem;
+  position: relative;
+  text-align: center;
+}
+
+.wish-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.93) 0%, rgba(230, 241, 249, 0.91) 50%, rgba(252, 236, 240, 0.93) 100%);
+  border-radius: var(--radius-lg);
+  padding: 3.25rem 2.25rem;
+  box-shadow: var(--shadow-lifted);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  outline: 2px dashed rgba(217, 139, 152, 0.45);
+  outline-offset: -10px;
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.cake-interactive-area {
+  margin: 1.5rem auto 2rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.cake-img-wrapper {
+  position: relative;
+  width: 145px;
+  height: 145px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(247, 220, 226, 0.45) 70%, transparent 100%);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.cake-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Animated Candle Flame */
+.candle-flame {
+  position: absolute;
+  top: 16px;
+  left: 70px;
+  width: 14px;
+  height: 20px;
+  background: radial-gradient(ellipse at bottom, #ffea79 0%, #ff8a00 60%, transparent 80%);
+  border-radius: 50% 50% 35% 35%;
+  box-shadow: 0 0 16px rgba(255, 180, 0, 0.8), 0 0 32px rgba(255, 100, 0, 0.4);
+  transform-origin: bottom center;
+  animation: flicker 1.2s ease-in-out infinite alternate;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.candle-flame.blown-out {
+  opacity: 0;
+  transform: scale(0.2) translateY(-10px);
+}
+
+@keyframes flicker {
+  0% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.08) rotate(3deg); }
+  100% { transform: scale(0.95) rotate(-1deg); }
+}
+
+.cake-smoke {
+  position: absolute;
+  top: 4px;
+  left: 68px;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cake-smoke.active {
+  animation: smokeRise 1.8s ease-out forwards;
+}
+
+@keyframes smokeRise {
+  0% { opacity: 0.8; transform: translateY(0) scale(0.8); }
+  50% { opacity: 0.5; transform: translateY(-20px) scale(1.4); }
+  100% { opacity: 0; transform: translateY(-40px) scale(2); }
+}
+
+.btn-blow-candle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  min-height: 50px;
+  padding: 0.92rem 2.25rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 20px rgba(217, 139, 152, 0.45);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.btn-blow-candle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(217, 139, 152, 0.55);
+}
+
+.wish-reveal-box {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.75rem;
+  background: linear-gradient(135deg, var(--pink-soft), var(--denim-soft));
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--denim-primary);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.wish-reveal-box.active {
+  display: block;
+}
+
+.wish-reveal-title {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--denim-900);
+  margin-bottom: 0.45rem;
+}
+
+.wish-reveal-text {
+  font-size: 1.05rem;
+  color: var(--ink-body);
+  line-height: 1.65;
+}
+
+.quick-reactions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2.25rem;
+}
+
+.btn-reaction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(74, 124, 157, 0.35);
+  min-height: 44px;
+  padding: 0.52rem 1.05rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--denim-900);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-reaction:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: linear-gradient(135deg, var(--pink-soft), var(--denim-soft));
+  border-color: var(--pink-primary);
+}
+
+/* --------------------------------------------------------------------------
+   9. Closing Section & Share
+   -------------------------------------------------------------------------- */
+.closing-section {
+  padding: 3.5rem 0 4.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.closing-card {
+  background: linear-gradient(145deg, rgba(252, 236, 241, 0.93) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(224, 239, 250, 0.93) 100%);
+  border-radius: var(--radius-lg);
+  padding: 3.25rem 2.5rem;
+  box-shadow: var(--shadow-lifted);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  outline: 2px dashed rgba(74, 124, 157, 0.42);
+  outline-offset: -10px;
+  max-width: 660px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.closing-quote {
+  font-family: var(--font-hand);
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: var(--denim-900);
+  line-height: 1.35;
+  margin-bottom: 1.25rem;
+}
+
+.closing-subtext {
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  margin-bottom: 2.25rem;
+}
+
+.closing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--denim-primary), var(--denim-800));
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 48px;
+  padding: 0.85rem 1.95rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 16px rgba(74, 124, 157, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-share:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 124, 157, 0.45);
+}
+
+.btn-scroll-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: #ffffff;
+  color: var(--ink-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-height: 48px;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(217, 139, 152, 0.5);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-scroll-top:hover {
+  transform: translateY(-2px);
+  background: var(--pink-soft);
+  color: var(--pink-dark);
+}
+
+/* --------------------------------------------------------------------------
+   10. Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  padding: 2.25rem 0 calc(3.25rem + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  border-top: 2px dashed rgba(74, 124, 157, 0.3);
+  background: linear-gradient(90deg, rgba(247, 220, 226, 0.55), rgba(255, 255, 255, 0.65), rgba(207, 227, 242, 0.55));
+  position: relative;
+  z-index: 1;
+}
+
+.footer-scrapbook-note {
+  font-family: var(--font-hand);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--denim-900);
+  margin-bottom: 0.3rem;
+}
+
+.footer-copy {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   11. Floating Action Button & Toast Alert
+   -------------------------------------------------------------------------- */
+.floating-top-btn {
+  position: fixed;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  right: 1.25rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffffff, var(--pink-pale));
+  border: 1.5px solid var(--pink-primary);
+  color: var(--denim-900);
+  box-shadow: 0 6px 18px rgba(42, 76, 102, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+}
+
+.floating-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floating-top-btn:hover {
+  background: linear-gradient(135deg, var(--pink-soft), var(--denim-soft));
+  color: var(--denim-900);
+  transform: translateY(-2px);
+}
+
+.toast-alert {
+  position: fixed;
+  bottom: calc(1.75rem + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: var(--denim-900);
+  color: #ffffff;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: calc(100vw - 2rem);
+  text-align: center;
+}
+
+.toast-alert.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1500;
+}
+
+/* --------------------------------------------------------------------------
+   12. Animations & Reduced Motion
+   -------------------------------------------------------------------------- */
+@keyframes floatSubtle {
+  0% { transform: translateY(0) rotate(12deg); }
+  100% { transform: translateY(-6px) rotate(10deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   13. Mobile Optimization (Smartphones & In-App Browsers)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    text-align: center;
+    padding: 2.25rem 1.5rem;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-theme-pills {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-sticky-note {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-polaroid-frame {
+    max-width: 340px;
+  }
+
+  .letter-paper {
+    padding: 2.25rem 1.65rem;
+    background-size: 100% 28px, 100% 100%, 100% 100%;
+    line-height: 28px;
+  }
+
+  .letter-body p {
+    line-height: 28px;
+  }
+
+  .paper-stamp {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 0 auto 1.25rem auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-left: 0.95rem;
+    padding-right: 0.95rem;
+  }
+
+  .site-nav-wrapper {
+    top: 0.65rem;
+    padding: 0 0.5rem;
+  }
+
+  .site-nav {
+    padding: 0.32rem 0.45rem;
+    gap: 0.2rem;
+  }
+
+  .nav-link {
+    font-size: 0.76rem;
+    padding: 0.38rem 0.6rem;
+  }
+
+  .nav-btn-music,
+  .nav-btn-confetti {
+    font-size: 0.76rem;
+    padding: 0.38rem 0.68rem;
+  }
+
+  .hero-section {
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .hero-grid {
+    padding: 1.75rem 1.1rem 2rem;
+    border-radius: 22px;
+    gap: 2rem;
+  }
+
+  .hero-greeting {
+    font-size: 1.15rem;
+    padding: 0.35rem 0.95rem;
+  }
+
+  .hero-title {
+    font-size: 2.55rem;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .theme-pill {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.7rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+  }
+
+  .hero-sticky-note {
+    padding: 0.85rem 1.1rem;
+  }
+
+  .hero-sticky-note p {
+    font-size: 1.2rem;
+  }
+
+  /* Keep Polaroid Stickers & Badges safely inside mobile screen bounds */
+  .hero-polaroid-frame {
+    max-width: 300px;
+    padding: 12px 12px 46px 12px;
+    transform: rotate(1deg);
+  }
+
+  .sticker-ribbon-hero {
+    top: -18px;
+    left: -10px;
+    width: 54px;
+  }
+
+  .badge-stamp-21 {
+    top: -18px;
+    right: -10px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .badge-stamp-21 span:last-child {
+    font-size: 1.65rem;
+  }
+
+  .badge-tag-special {
+    bottom: 54px;
+    left: -10px;
+    font-size: 1.1rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+  .sticker-balloon-hero {
+    bottom: 85px;
+    right: -12px;
+    width: 52px;
+  }
+
+  .sticker-bouquet-hero {
+    bottom: -14px;
+    right: 12px;
+    width: 48px;
+  }
+
+  .letter-section,
+  .celebration-section,
+  .closing-section {
+    padding: 2.75rem 0 3.25rem;
+  }
+
+  .envelope-box,
+  .wish-card,
+  .closing-card {
+    padding: 2.35rem 1.25rem;
+  }
+
+  .btn-open-letter,
+  .btn-blow-candle,
+  .btn-share,
+  .btn-scroll-top {
+    width: 100%;
+  }
+
+  .letter-paper {
+    padding: 1.75rem 1.2rem;
+  }
+
+  .letter-salutation {
+    font-size: 1.75rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .letter-body p {
+    font-size: 0.97rem;
+    text-align: left;
+    margin-bottom: 1.4rem;
+  }
+
+  .quick-reactions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .btn-reaction {
+    width: 100%;
+    font-size: 0.86rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .closing-quote {
+    font-size: 1.68rem;
+  }
+
+  .closing-actions {
+    flex-direction: column;
+  }
+}
