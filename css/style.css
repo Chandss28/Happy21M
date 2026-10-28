@@ -218,70 +218,70 @@ body::after {
   100% { transform: translate(-46%, -54%) scale(1.12) rotate(18deg); }
 }
 
-/* Decorative Floating Scrapbook Stickers in Background */
+/* Large Clean Vector Floating Illustrations in Background */
 .bg-floating-sticker {
   position: absolute;
   pointer-events: none;
-  opacity: 0.58;
-  filter: drop-shadow(0 6px 14px rgba(42, 76, 102, 0.14));
+  opacity: 0.82;
+  filter: drop-shadow(0 10px 20px rgba(42, 76, 102, 0.18));
   will-change: transform;
 }
 
 .bg-sticker-1 {
-  top: 12%;
-  left: 3.5%;
-  width: 68px;
+  top: 8%;
+  left: 2.5%;
+  width: 130px;
   animation: stickerFloatA 7s ease-in-out infinite alternate;
 }
 
 .bg-sticker-2 {
-  top: 18%;
-  right: 4%;
-  width: 72px;
-  animation: stickerFloatB 8.5s ease-in-out infinite alternate;
+  top: 12%;
+  right: 3%;
+  width: 125px;
+  animation: stickerFloatB 8.2s ease-in-out infinite alternate;
 }
 
 .bg-sticker-3 {
-  top: 52%;
-  left: 2.5%;
-  width: 66px;
-  animation: stickerFloatB 9s ease-in-out infinite alternate-reverse;
+  top: 46%;
+  left: 1.8%;
+  width: 138px;
+  animation: stickerFloatB 8.8s ease-in-out infinite alternate-reverse;
 }
 
 .bg-sticker-4 {
-  top: 58%;
-  right: 3%;
-  width: 64px;
-  animation: stickerFloatA 7.8s ease-in-out infinite alternate;
+  top: 52%;
+  right: 2.2%;
+  width: 118px;
+  animation: stickerFloatA 7.5s ease-in-out infinite alternate;
 }
 
 .bg-sticker-5 {
-  bottom: 10%;
-  left: 5%;
-  width: 60px;
-  animation: stickerFloatA 8.2s ease-in-out infinite alternate-reverse;
+  bottom: 7%;
+  left: 3.5%;
+  width: 122px;
+  animation: stickerFloatA 8s ease-in-out infinite alternate-reverse;
 }
 
 .bg-sticker-6 {
-  bottom: 12%;
-  right: 5%;
-  width: 62px;
-  animation: stickerFloatB 7.4s ease-in-out infinite alternate;
+  bottom: 8%;
+  right: 3.5%;
+  width: 120px;
+  animation: stickerFloatB 7.2s ease-in-out infinite alternate;
 }
 
 @keyframes stickerFloatA {
-  0% { transform: translateY(0px) translateX(0px) rotate(-12deg) scale(1); }
-  50% { transform: translateY(-22px) translateX(10px) rotate(6deg) scale(1.06); }
-  100% { transform: translateY(14px) translateX(-8px) rotate(-16deg) scale(0.97); }
+  0% { transform: translateY(0px) translateX(0px) rotate(-10deg) scale(1); }
+  50% { transform: translateY(-28px) translateX(14px) rotate(8deg) scale(1.08); }
+  100% { transform: translateY(18px) translateX(-10px) rotate(-14deg) scale(0.96); }
 }
 
 @keyframes stickerFloatB {
   0% { transform: translateY(0px) translateX(0px) rotate(10deg) scale(1); }
-  50% { transform: translateY(20px) translateX(-12px) rotate(-8deg) scale(1.05); }
-  100% { transform: translateY(-18px) translateX(8px) rotate(15deg) scale(0.98); }
+  50% { transform: translateY(26px) translateX(-16px) rotate(-8deg) scale(1.07); }
+  100% { transform: translateY(-22px) translateX(12px) rotate(14deg) scale(0.97); }
 }
 
-/* Continuous Floating Background Particles (Hearts, Blossoms, Ribbons, Glowing Bubbles) */
+/* Continuous Floating Background Particles (Large Vector Assets, Hearts, Blossoms, Bubbles) */
 .bg-floating-items {
   position: absolute;
   inset: 0;
@@ -291,13 +291,19 @@ body::after {
 
 .bg-floater {
   position: absolute;
-  bottom: -60px;
+  bottom: -110px;
   user-select: none;
   pointer-events: none;
   will-change: transform, opacity;
   animation-name: floatUpAndSway;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+.bg-floater-img {
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(74, 124, 157, 0.2));
 }
 
 .bg-floater-bubble {
@@ -1746,8 +1752,8 @@ a {
   }
 
   .bg-floating-sticker {
-    width: 46px !important;
-    opacity: 0.48;
+    width: 78px !important;
+    opacity: 0.72;
   }
 
   .site-nav-wrapper {

@@ -16,39 +16,76 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   /* ==========================================================================
-     1. Continuous Floating Background Layer (Pink & Blue Hearts, Flowers, Bubbles)
+     0. Custom Address Bar Slug (#Happy21M!!🩵♡)
+     ========================================================================== */
+  if (!window.location.hash || window.location.hash === '#') {
+    try {
+      window.history.replaceState(null, '', '#Happy21M!!🩵♡');
+    } catch (_) {
+      // Ignore if file:// protocol restricts replaceState
+    }
+  }
+
+  /* ==========================================================================
+     1. Continuous Floating Background Layer (Large Clean Vector Assets & Hearts)
      ========================================================================== */
   const bgFloatingItems = document.getElementById('bgFloatingItems');
 
   function initFloatingBackground() {
     if (!bgFloatingItems) return;
 
-    const symbols = ['🩵', '🩷', '🌸', '🎀', '✨', '🩵', '🌸', '🩷', '♡', '⋆'];
-    const totalItems = window.innerWidth < 600 ? 20 : 30;
+    const svgAssets = [
+      './assets/float-bow-pink.svg',
+      './assets/float-bow-blue.svg',
+      './assets/float-balloon-duo.svg',
+      './assets/float-sakura-bloom.svg',
+      './assets/float-cloud-love.svg',
+      './assets/float-gift-box.svg'
+    ];
+    const symbols = ['🩵', '🩷', '🌸', '🎀', '✨', '♡'];
+    const isMobile = window.innerWidth < 600;
+    const totalItems = isMobile ? 22 : 32;
 
     for (let i = 0; i < totalItems; i++) {
       const el = document.createElement('div');
       el.classList.add('bg-floater');
 
-      const isBubble = i % 3 === 0;
-      if (isBubble) {
+      if (i % 2 === 0) {
+        // Large Clean Vector Illustration Asset
+        const img = document.createElement('img');
+        img.src = svgAssets[i % svgAssets.length];
+        img.alt = '';
+        img.classList.add('bg-floater-img');
+        const imgSize = isMobile
+          ? Math.floor(Math.random() * 28) + 52
+          : Math.floor(Math.random() * 42) + 68;
+        img.style.width = `${imgSize}px`;
+        img.style.height = `${imgSize}px`;
+        el.appendChild(img);
+      } else if (i % 4 === 1) {
+        // Large Glowing Pastel Bubble
         el.classList.add('bg-floater-bubble');
-        el.classList.add(i % 2 === 0 ? 'bubble-pink' : 'bubble-blue');
-        const size = Math.floor(Math.random() * 24) + 14;
+        el.classList.add(i % 3 === 0 ? 'bubble-pink' : 'bubble-blue');
+        const size = isMobile
+          ? Math.floor(Math.random() * 26) + 28
+          : Math.floor(Math.random() * 36) + 36;
         el.style.width = `${size}px`;
         el.style.height = `${size}px`;
       } else {
+        // Large Floating Heart / Blossom / Ribbon Symbol
         el.textContent = symbols[i % symbols.length];
-        const fontSize = (Math.random() * 0.95 + 1.05).toFixed(2);
+        const fontSize = isMobile
+          ? (Math.random() * 0.9 + 1.65).toFixed(2)
+          : (Math.random() * 1.2 + 2.0).toFixed(2);
         el.style.fontSize = `${fontSize}rem`;
-        el.style.filter = 'drop-shadow(0 3px 6px rgba(74, 124, 157, 0.16))';
+        el.style.filter = 'drop-shadow(0 5px 10px rgba(74, 124, 157, 0.22))';
       }
 
-      const leftPos = (Math.random() * 96 + 2).toFixed(2);
-      const duration = (Math.random() * 10 + 11).toFixed(2);
-      const delay = -(Math.random() * 20).toFixed(2);
-      const swayX = `${(Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 35) + 18)}px`;
-      const maxOpacity = isBubble ? (Math.random() * 0.35 + 0.45).toFixed(2) : (Math.random() * 0.35 + 0.52).toFixed(2);
+      const leftPos = (Math.random() * 94 + 2).toFixed(2);
+      const duration = (Math.random() * 11 + 13).toFixed(2);
+      const delay = -(Math.random() * 24).toFixed(2);
+      const swayX = `${(Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 48) + 24)}px`;
+      const maxOpacity = (Math.random() * 0.28 + 0.58).toFixed(2);
 
       el.style.left = `${leftPos}%`;
       el.style.animationDuration = `${duration}s`;
@@ -619,8 +656,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnShare) {
     btnShare.addEventListener('click', async () => {
       const shareData = {
-        title: 'Happy 21st Birthday, M 🩵',
-        text: 'Scrapbook spesial dan surat ulang tahun ke-21 untuk M tersayang 🩵🌸',
+        title: 'Happy21M!! 🩵♡',
+        text: 'Happy21M!! 🩵♡ Scrapbook spesial dan surat ulang tahun ke-21 untuk M tersayang 🌸',
         url: window.location.href
       };
 

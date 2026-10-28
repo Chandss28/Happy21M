@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="boxBlue" x1="40" y1="75" x2="160" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D9EEFF"/>
+      <stop offset="50%" stop-color="#8BC0E4"/>
+      <stop offset="100%" stop-color="#4A7C9D"/>
+    </linearGradient>
+    <linearGradient id="ribbonPink" x1="60" y1="30" x2="140" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFE0EA"/>
+      <stop offset="50%" stop-color="#F298AD"/>
+      <stop offset="100%" stop-color="#C96078"/>
+    </linearGradient>
+    <filter id="giftShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#284B63" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#giftShadow)" transform="rotate(-6 100 105)">
+    <!-- Top Ribbon Bow -->
+    <path d="M98 68 C74 30, 36 34, 42 62 C46 80, 78 78, 98 70 Z" fill="url(#ribbonPink)" stroke="#FFFFFF" stroke-width="2.5"/>
+    <path d="M102 68 C126 30, 164 34, 158 62 C154 80, 122 78, 102 70 Z" fill="url(#ribbonPink)" stroke="#FFFFFF" stroke-width="2.5"/>
+    <!-- Gift Box Body -->
+    <rect x="44" y="84" width="112" height="86" rx="12" fill="url(#boxBlue)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Gift Box Lid -->
+    <rect x="36" y="64" width="128" height="26" rx="8" fill="url(#boxBlue)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Vertical & Horizontal Pink Ribbons -->
+    <rect x="88" y="64" width="24" height="106" fill="url(#ribbonPink)" stroke="#FFFFFF" stroke-width="2"/>
+    <rect x="44" y="116" width="112" height="20" fill="url(#ribbonPink)" stroke="#FFFFFF" stroke-width="2"/>
+    <!-- Bow Center Heart -->
+    <circle cx="100" cy="66" r="10" fill="#FFE6EE" stroke="#FFFFFF" stroke-width="2.5"/>
+  </g>
+</svg>

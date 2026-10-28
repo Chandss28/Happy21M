@@ -61,11 +61,21 @@ function runVerification() {
     `Kata "2 tahun / 2 years" hanya muncul tepat 1 kali di dalam isi surat (ditemukan: ${twoYearMatches.length})`
   );
 
-  // 3. Check Lively Floating Background Elements
-  console.log('\n--- 3. Memeriksa Animasi Floating Background Pink & Biru ---');
-  assert(html.includes('class="bg-floating-sticker'), 'Stiker melayang di background tersedia di HTML');
+  // 3. Check Lively Floating Background Elements (Clean SVG Vector Assets, Not Cropped Poster Stickers)
+  console.log('\n--- 3. Memeriksa Aset Floating Background (Besar & Bersih Tanpa Crop Poster) ---');
+  assert(!html.includes('sticker-blue-ribbon.png') && !html.includes('sticker-heart-balloon.png'), 'Aset potongan poster lama sudah tidak dipakai untuk stiker melayang');
+  assert(
+    html.includes('float-balloon-duo.svg') &&
+    html.includes('float-bow-blue.svg') &&
+    html.includes('float-bow-pink.svg') &&
+    html.includes('float-sakura-bloom.svg') &&
+    html.includes('float-cloud-love.svg') &&
+    html.includes('float-gift-box.svg'),
+    '6 aset ilustrasi vektor transparan baru (pita pink/biru, balon hati, sakura, awan cinta, kado) aktif di background'
+  );
+  assert(js.includes('#Happy21M!!🩵♡') && html.includes('Happy21M!! 🩵♡'), 'Alamat / slug #Happy21M!!🩵♡ sudah terpasang otomatis');
   assert(css.includes('@keyframes floatUpAndSway') && css.includes('@keyframes orbDrift1'), 'Animasi keyframes floating & aurora drift tersedia di CSS');
-  assert(js.includes('initFloatingBackground'), 'Generator elemen floating (hati, bunga, pita, bubble) aktif di JS');
+  assert(js.includes('initFloatingBackground'), 'Generator elemen floating berukuran besar aktif di JS');
 
   // 4. Check Louder Music & Auto-Start on First Interaction + Manual Toggle
   console.log('\n--- 4. Memeriksa Audio Musik (Suara Lebih Keras + Auto-Start + Toggle Manual) ---');

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 240" fill="none">
+  <defs>
+    <radialGradient id="pinkHeartGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFE8EF"/>
+      <stop offset="45%" stop-color="#F49CB0"/>
+      <stop offset="100%" stop-color="#C96078"/>
+    </radialGradient>
+    <radialGradient id="blueHeartGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#E6F4FF"/>
+      <stop offset="45%" stop-color="#7AB3DA"/>
+      <stop offset="100%" stop-color="#417294"/>
+    </radialGradient>
+    <filter id="balloonShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#2D4A60" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+  <g filter="url(#balloonShadow)">
+    <!-- Curly Strings -->
+    <path d="M82 135 Q70 168 88 192 T76 232" stroke="#D98B98" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M142 145 Q154 176 134 200 T146 234" stroke="#4A7C9D" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <!-- Blue Heart Balloon (Right/Back) -->
+    <g transform="translate(142, 88) rotate(10) translate(-142, -88)">
+      <path d="M142 142 C142 142, 88 104, 88 66 C88 44, 106 30, 124 30 C135 30, 142 38, 142 46 C142 38, 149 30, 160 30 C178 30, 196 44, 196 66 C196 104, 142 142, 142 142 Z" fill="url(#blueHeartGrad)" stroke="#FFFFFF" stroke-width="3"/>
+      <ellipse cx="114" cy="56" rx="10" ry="6" transform="rotate(-30 114 56)" fill="#FFFFFF" opacity="0.65"/>
+    </g>
+    <!-- Pink Heart Balloon (Left/Front) -->
+    <g transform="translate(82, 78) rotate(-10) translate(-82, -78)">
+      <path d="M82 134 C82 134, 24 94, 24 54 C24 30, 44 16, 62 16 C74 16, 82 24, 82 34 C82 24, 90 16, 102 16 C120 16, 140 30, 140 54 C140 94, 82 134, 82 134 Z" fill="url(#pinkHeartGrad)" stroke="#FFFFFF" stroke-width="3"/>
+      <ellipse cx="52" cy="42" rx="12" ry="7" transform="rotate(-30 52 42)" fill="#FFFFFF" opacity="0.7"/>
+    </g>
+    <!-- Sparkles -->
+    <path d="M188 22 L192 32 L202 36 L192 40 L188 50 L184 40 L174 36 L184 32 Z" fill="#FFF3D1"/>
+    <path d="M24 112 L27 120 L35 123 L27 126 L24 134 L21 126 L13 123 L21 120 Z" fill="#FFF3D1"/>
+  </g>
+</svg>
