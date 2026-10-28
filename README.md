@@ -143,21 +143,16 @@ Jika Anda ingin mengubah kata-kata dalam surat agar lebih personal, Anda dapat m
 
 ## 🌐 Panduan Publikasi ke GitHub Pages
 
-Project ini sudah disiapkan dengan path relatif (`./assets/...`, `./css/...`, `./js/...`) sehingga siap dipublikasikan ke GitHub Pages pada repository bernama `birthday-m`:
+Project ini sudah disiapkan dengan path relatif (`./assets/...`, `./css/...`, `./js/...`) serta slug otomatis `#Happy21M!!🩵♡` sehingga siap dipublikasikan ke GitHub Pages pada repository bernama **`Happy21M`**:
 
-1. Buat repository baru di GitHub dengan nama `birthday-m`.
+1. Buat repository baru di GitHub dengan nama **`Happy21M`**.
 2. Lakukan push seluruh file di folder ini ke repository tersebut:
    ```bash
-   git init
-   git add .
-   git commit -m "feat: complete 21st birthday scrapbook website for M"
-   git branch -M main
-   git remote add origin https://github.com/<username-anda>/birthday-m.git
+   git remote add origin https://github.com/<username-anda>/Happy21M.git
    git push -u origin main
    ```
 3. Di halaman repository GitHub Anda:
    - Masuk ke tab **Settings** > **Pages**.
-   - Pada bagian **Build and deployment** > **Source**, pilih **Deploy from a branch**.
-   - Pilih branch `main` dan folder `/ (root)`, lalu klik **Save**.
+   - Pada bagian **Build and deployment** > **Source**, pilih **GitHub Actions** (atau **Deploy from a branch** > `main` / `/ (root)`).
 4. Website akan aktif dalam beberapa menit pada URL:
-   `https://<username-anda>.github.io/birthday-m/`
+   `https://<username-anda>.github.io/Happy21M/#Happy21M!!🩵♡`
