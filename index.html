@@ -49,6 +49,58 @@
 
 <body>
 
+  <!-- ==========================================================================
+       OPENING GIANT MIXED BOUQUET POP-UP OVERLAY (SUNFLOWERS & ROSES)
+       ========================================================================== -->
+  <div id="openingBouquetModal" class="bouquet-opening-overlay active" role="dialog" aria-modal="true"
+    aria-labelledby="bouquetModalTitle">
+    <!-- Ambient Shimmering Petals & Glow inside Opening Overlay -->
+    <div class="bouquet-ambient-glow" aria-hidden="true"></div>
+    <div class="bouquet-floating-petals" aria-hidden="true">
+      <span class="petal-item p-1">🌻</span>
+      <span class="petal-item p-2">🌹</span>
+      <span class="petal-item p-3">🌸</span>
+      <span class="petal-item p-4">🩵</span>
+      <span class="petal-item p-5">✨</span>
+      <span class="petal-item p-6">🌻</span>
+      <span class="petal-item p-7">🌷</span>
+      <span class="petal-item p-8">🩷</span>
+    </div>
+
+    <div class="bouquet-popup-card">
+      <div class="bouquet-badge-top">
+        <span>🌻</span>
+        <span>SPECIAL FLOWER DELIVERY FOR M</span>
+        <span>🌹</span>
+      </div>
+
+      <!-- Giant Bouquet Illustration Container -->
+      <div class="giant-bouquet-stage" id="giantBouquetTrigger" role="button" tabindex="0"
+        aria-label="Terima Buket Bunga dan Buka Scrapbook">
+        <div class="bouquet-aura-ring" aria-hidden="true"></div>
+        <img src="./assets/giant-bouquet.svg" alt="Buket Bunga Raksasa Campuran Bunga Matahari, Mawar Pink, dan Hydrangea Biru"
+          class="giant-bouquet-img" width="420" height="450">
+        <span class="bouquet-sparkle sp-1" aria-hidden="true">✨</span>
+        <span class="bouquet-sparkle sp-2" aria-hidden="true">🩵</span>
+        <span class="bouquet-sparkle sp-3" aria-hidden="true">🌸</span>
+        <span class="bouquet-sparkle sp-4" aria-hidden="true">✨</span>
+      </div>
+
+      <h2 id="bouquetModalTitle" class="bouquet-popup-title">
+        Happy 21<span class="title-pink">st</span> Birthday, <span class="title-accent">M! 🩵</span>
+      </h2>
+
+      <p class="bouquet-popup-subtitle">
+        Sebuah buket bunga matahari &amp; mawar manis untuk menyambut hari lahirmu. Semoga harimu secerah bunga matahari dan seindah mawar yang mekar. ♡
+      </p>
+
+      <button type="button" id="btnAcceptBouquet" class="btn-accept-bouquet">
+        <span>Terima Buket &amp; Buka Scrapbook</span>
+        <span>💐✨</span>
+      </button>
+    </div>
+  </div>
+
   <!-- Animated Pink & Blue Theme Background + Floating Decorations Layer -->
   <div class="bg-decor-layer" aria-hidden="true">
     <div class="bg-orb bg-orb-pink-1"></div>
@@ -78,6 +130,9 @@
       <a href="#hero" class="nav-link active">🏠 Beranda</a>
       <a href="#letter" class="nav-link">💌 Surat</a>
       <a href="#celebration" class="nav-link">🎂 Harapan</a>
+      <button type="button" id="btnReplayBouquet" class="nav-link" title="Lihat Kembali Buket Bunga">
+        <span>💐</span> <span>Buket</span>
+      </button>
       <button type="button" id="btnMusicToggle" class="nav-btn-music playing" aria-pressed="true" title="Nyalakan/Matikan Musik Secara Manual">
         <span>🎶</span> <span>Musik: ON</span>
       </button>

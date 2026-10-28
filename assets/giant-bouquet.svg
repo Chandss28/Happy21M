@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 560" fill="none">
+  <defs>
+    <!-- Wrapping Paper Gradients -->
+    <linearGradient id="wrapBackPink" x1="120" y1="120" x2="400" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FCE4EC"/>
+      <stop offset="50%" stop-color="#F4B8C6"/>
+      <stop offset="100%" stop-color="#D98296"/>
+    </linearGradient>
+    <linearGradient id="wrapBackBlue" x1="80" y1="150" x2="420" y2="490" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E3F2FD"/>
+      <stop offset="50%" stop-color="#A8CEE8"/>
+      <stop offset="100%" stop-color="#5B8FB3"/>
+    </linearGradient>
+    <linearGradient id="wrapFrontCream" x1="160" y1="240" x2="360" y2="510" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFDF9"/>
+      <stop offset="60%" stop-color="#F9EFE6"/>
+      <stop offset="100%" stop-color="#E8D5C4"/>
+    </linearGradient>
+    <linearGradient id="wrapFoldPink" x1="140" y1="280" x2="380" y2="510" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFEBF0"/>
+      <stop offset="55%" stop-color="#F2A7B8"/>
+      <stop offset="100%" stop-color="#C96A80"/>
+    </linearGradient>
+
+    <!-- Foliage Gradients -->
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#81C784"/>
+      <stop offset="60%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#2E7D32"/>
+    </linearGradient>
+    <linearGradient id="leafSage" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A5D6A7"/>
+      <stop offset="55%" stop-color="#66BB6A"/>
+      <stop offset="100%" stop-color="#388E3C"/>
+    </linearGradient>
+
+    <!-- Sunflower Gradients -->
+    <linearGradient id="sunPetalLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF176"/>
+      <stop offset="55%" stop-color="#FFD54F"/>
+      <stop offset="100%" stop-color="#FFA000"/>
+    </linearGradient>
+    <linearGradient id="sunPetalDeep" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#FFCA28"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </linearGradient>
+    <radialGradient id="sunCenter" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#6D4C41"/>
+      <stop offset="60%" stop-color="#4E342E"/>
+      <stop offset="100%" stop-color="#271815"/>
+    </radialGradient>
+
+    <!-- Rose Gradients -->
+    <radialGradient id="rosePinkOuter" cx="45%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFE4EC"/>
+      <stop offset="55%" stop-color="#F08099"/>
+      <stop offset="100%" stop-color="#B83B5E"/>
+    </radialGradient>
+    <radialGradient id="rosePinkInner" cx="45%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#FFB6C8"/>
+      <stop offset="60%" stop-color="#D84B6E"/>
+      <stop offset="100%" stop-color="#8E1F3F"/>
+    </radialGradient>
+    <radialGradient id="roseBlushOuter" cx="45%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#FAD0DA"/>
+      <stop offset="100%" stop-color="#DF889D"/>
+    </radialGradient>
+
+    <!-- Blue Hydrangea Gradient -->
+    <radialGradient id="blueBlossom" cx="40%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#EBF6FF"/>
+      <stop offset="55%" stop-color="#85BFE6"/>
+      <stop offset="100%" stop-color="#4A7C9D"/>
+    </radialGradient>
+
+    <!-- Ribbon Gradient -->
+    <linearGradient id="ribbonBowBlue" x1="180" y1="360" x2="340" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D9EEFF"/>
+      <stop offset="50%" stop-color="#6CA7D0"/>
+      <stop offset="100%" stop-color="#386687"/>
+    </linearGradient>
+
+    <filter id="bouquetDropShadow" x="-12%" y="-12%" width="124%" height="128%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#283C4F" flood-opacity="0.28"/>
+    </filter>
+    <filter id="flowerShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#2A1F24" flood-opacity="0.22"/>
+    </filter>
+
+    <!-- Reusable Sunflower Component -->
+    <g id="sunflowerFull">
+      <!-- Back Layer Petals (12) -->
+      <g fill="url(#sunPetalDeep)">
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(15)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(45)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(75)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(105)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(135)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(165)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(195)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(225)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(255)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(285)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(315)"/>
+        <ellipse cx="0" cy="-48" rx="11" ry="30" transform="rotate(345)"/>
+      </g>
+      <!-- Front Layer Petals (12) -->
+      <g fill="url(#sunPetalLight)" stroke="#FFF9C4" stroke-width="0.8">
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(30)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(90)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(150)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(210)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(270)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(300)"/>
+        <ellipse cx="0" cy="-46" rx="10.5" ry="29" transform="rotate(330)"/>
+      </g>
+      <!-- Center Seed Disc -->
+      <circle cx="0" cy="0" r="26" fill="url(#sunCenter)" stroke="#FFB300" stroke-width="3" stroke-dasharray="4 2"/>
+      <circle cx="0" cy="0" r="19" fill="none" stroke="#8D6E63" stroke-width="1.8" stroke-dasharray="3 4"/>
+      <circle cx="-6" cy="-6" r="2" fill="#FFD54F" opacity="0.7"/>
+      <circle cx="7" cy="-5" r="2" fill="#FFD54F" opacity="0.7"/>
+      <circle cx="0" cy="8" r="2" fill="#FFD54F" opacity="0.7"/>
+      <circle cx="-8" cy="5" r="1.8" fill="#FFD54F" opacity="0.7"/>
+      <circle cx="8" cy="6" r="1.8" fill="#FFD54F" opacity="0.7"/>
+    </g>
+
+    <!-- Reusable Blooming Rose Component (Deep Pink) -->
+    <g id="roseDeepPink">
+      <!-- Outer Petals -->
+      <circle cx="-16" cy="-12" r="26" fill="url(#rosePinkOuter)" stroke="#FFF0F5" stroke-width="1.2"/>
+      <circle cx="16" cy="-12" r="26" fill="url(#rosePinkOuter)" stroke="#FFF0F5" stroke-width="1.2"/>
+      <circle cx="0" cy="16" r="26" fill="url(#rosePinkOuter)" stroke="#FFF0F5" stroke-width="1.2"/>
+      <circle cx="-18" cy="10" r="24" fill="url(#rosePinkOuter)" stroke="#FFF0F5" stroke-width="1.2"/>
+      <circle cx="18" cy="10" r="24" fill="url(#rosePinkOuter)" stroke="#FFF0F5" stroke-width="1.2"/>
+      <!-- Mid Layer -->
+      <path d="M-24 -6 C-28 -26, 28 -26, 24 -6 C28 18, -28 18, -24 -6 Z" fill="url(#rosePinkInner)" stroke="#FFD6E2" stroke-width="1.5"/>
+      <!-- Inner Rose Swirl -->
+      <path d="M-14 -4 C-16 -18, 16 -18, 14 -2 C12 12, -12 12, -10 0 C-8 -8, 8 -8, 6 0 C4 5, -4 4, -2 0" fill="none" stroke="#FFEBF0" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Reusable Blush Rose Component -->
+    <g id="roseBlush">
+      <circle cx="-14" cy="-10" r="23" fill="url(#roseBlushOuter)" stroke="#FFFFFF" stroke-width="1.2"/>
+      <circle cx="14" cy="-10" r="23" fill="url(#roseBlushOuter)" stroke="#FFFFFF" stroke-width="1.2"/>
+      <circle cx="0" cy="14" r="23" fill="url(#roseBlushOuter)" stroke="#FFFFFF" stroke-width="1.2"/>
+      <path d="M-20 -4 C-24 -22, 24 -22, 20 -4 C24 16, -24 16, -20 -4 Z" fill="url(#rosePinkOuter)" stroke="#FFFFFF" stroke-width="1.4"/>
+      <path d="M-11 -3 C-13 -14, 13 -14, 11 -1 C9 10, -9 10, -7 0 C-5 -6, 5 -6, 4 0" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+    </g>
+
+    <!-- Reusable Blue Hydrangea Floret -->
+    <g id="blueFloret">
+      <circle cx="0" cy="-11" r="10" fill="url(#blueBlossom)" stroke="#FFFFFF" stroke-width="1.2"/>
+      <circle cx="11" cy="0" r="10" fill="url(#blueBlossom)" stroke="#FFFFFF" stroke-width="1.2"/>
+      <circle cx="0" cy="11" r="10" fill="url(#blueBlossom)" stroke="#FFFFFF" stroke-width="1.2"/>
+      <circle cx="-11" cy="0" r="10" fill="url(#blueBlossom)" stroke="#FFFFFF" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="4.5" fill="#FFF59D"/>
+    </g>
+  </defs>
+
+  <g filter="url(#bouquetDropShadow)">
+    <!-- 1. BACK WRAPPING PAPER (Layered Pink & Blue Pleats) -->
+    <!-- Left Blue Wing -->
+    <path d="M260 440 L64 210 C56 196, 68 176, 86 180 L132 190 L118 134 C114 116, 132 102, 148 112 L260 185 Z" fill="url(#wrapBackBlue)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Right Blue Wing -->
+    <path d="M260 440 L456 210 C464 196, 452 176, 434 180 L388 190 L402 134 C406 116, 388 102, 372 112 L260 185 Z" fill="url(#wrapBackBlue)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Center Top Pink Crown Wrap -->
+    <path d="M260 430 L144 128 C140 112, 158 98, 174 108 L216 135 L244 82 C252 68, 268 68, 276 82 L304 135 L346 108 C362 98, 380 112, 376 128 Z" fill="url(#wrapBackPink)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Inner White Tissue Paper Frill -->
+    <path d="M120 210 Q160 160 205 185 Q260 140 315 185 Q360 160 400 210 L260 420 Z" fill="#FFFFFF" opacity="0.88"/>
+
+    <!-- 2. BACK FOLIAGE & EUCALYPTUS LEAVES -->
+    <g stroke="#FFFFFF" stroke-width="1.5">
+      <path d="M160 220 C110 175, 80 120, 105 90 C135 110, 165 160, 160 220 Z" fill="url(#leafGreen)"/>
+      <path d="M360 220 C410 175, 440 120, 415 90 C385 110, 355 160, 360 220 Z" fill="url(#leafGreen)"/>
+      <path d="M210 170 C185 115, 190 65, 220 52 C240 78, 235 130, 210 170 Z" fill="url(#leafSage)"/>
+      <path d="M310 170 C335 115, 330 65, 300 52 C280 78, 285 130, 310 170 Z" fill="url(#leafSage)"/>
+      <path d="M130 275 C78 255, 52 215, 68 188 C98 198, 125 235, 130 275 Z" fill="url(#leafSage)"/>
+      <path d="M390 275 C442 255, 468 215, 452 188 C422 198, 395 235, 390 275 Z" fill="url(#leafSage)"/>
+    </g>
+
+    <!-- 3. BLUE HYDRANGEA CLUSTERS (Theme Accent) -->
+    <g filter="url(#flowerShadow)">
+      <use href="#blueFloret" x="148" y="168" transform="scale(1.05)"/>
+      <use href="#blueFloret" x="352" y="168" transform="scale(1.05)"/>
+      <use href="#blueFloret" x="260" y="118"/>
+      <use href="#blueFloret" x="122" y="248"/>
+      <use href="#blueFloret" x="398" y="248"/>
+      <use href="#blueFloret" x="206" y="294"/>
+      <use href="#blueFloret" x="314" y="294"/>
+    </g>
+
+    <!-- 4. BLOOMING ROSES (Deep Pink & Blush Pink) -->
+    <g filter="url(#flowerShadow)">
+      <!-- Top Center Blush Rose -->
+      <use href="#roseBlush" transform="translate(260, 148) scale(1.12)"/>
+      <!-- Upper Left Deep Pink Rose -->
+      <use href="#roseDeepPink" transform="translate(192, 162) rotate(-15) scale(1.08)"/>
+      <!-- Upper Right Deep Pink Rose -->
+      <use href="#roseDeepPink" transform="translate(328, 162) rotate(15) scale(1.08)"/>
+      <!-- Lower Left Deep Pink Rose -->
+      <use href="#roseDeepPink" transform="translate(154, 282) rotate(-22) scale(1.15)"/>
+      <!-- Lower Right Deep Pink Rose -->
+      <use href="#roseDeepPink" transform="translate(366, 282) rotate(22) scale(1.15)"/>
+      <!-- Lower Center Blush Rose -->
+      <use href="#roseBlush" transform="translate(260, 298) scale(1.18)"/>
+    </g>
+
+    <!-- 5. HERO SUNFLOWERS (3 Giant Golden Sunflowers) -->
+    <g filter="url(#flowerShadow)">
+      <!-- Left Sunflower -->
+      <use href="#sunflowerFull" transform="translate(176, 224) rotate(-12) scale(1.05)"/>
+      <!-- Right Sunflower -->
+      <use href="#sunflowerFull" transform="translate(344, 224) rotate(12) scale(1.05)"/>
+      <!-- Center Main Giant Sunflower -->
+      <use href="#sunflowerFull" transform="translate(260, 218) scale(1.24)"/>
+    </g>
+
+    <!-- 6. BABY'S BREATH (White Gypsophila Clusters) -->
+    <g fill="#FFFFFF" opacity="0.95">
+      <circle cx="215" cy="112" r="5"/><circle cx="226" cy="104" r="4"/><circle cx="206" cy="102" r="3.5"/>
+      <circle cx="305" cy="112" r="5"/><circle cx="294" cy="104" r="4"/><circle cx="314" cy="102" r="3.5"/>
+      <circle cx="112" cy="198" r="5"/><circle cx="102" cy="190" r="4"/><circle cx="118" cy="184" r="3.5"/>
+      <circle cx="408" cy="198" r="5"/><circle cx="418" cy="190" r="4"/><circle cx="402" cy="184" r="3.5"/>
+      <circle cx="212" cy="268" r="4.5"/><circle cx="202" cy="276" r="3.5"/>
+      <circle cx="308" cy="268" r="4.5"/><circle cx="318" cy="276" r="3.5"/>
+    </g>
+
+    <!-- 7. LOWER BOUQUET STEMS (Peeking at the Bottom) -->
+    <g stroke-linecap="round">
+      <line x1="245" y1="450" x2="228" y2="532" stroke="#388E3C" stroke-width="8"/>
+      <line x1="260" y1="450" x2="260" y2="538" stroke="#2E7D32" stroke-width="9"/>
+      <line x1="275" y1="450" x2="292" y2="532" stroke="#388E3C" stroke-width="8"/>
+      <line x1="252" y1="450" x2="242" y2="535" stroke="#4CAF50" stroke-width="7"/>
+      <line x1="268" y1="450" x2="278" y2="535" stroke="#4CAF50" stroke-width="7"/>
+    </g>
+
+    <!-- 8. FRONT WRAPPING CONE (Cream & Pink Layered Fold) -->
+    <!-- Left Front Cream Wing -->
+    <path d="M104 282 L260 356 L296 492 L212 492 Z" fill="url(#wrapFrontCream)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Right Front Cream Wing -->
+    <path d="M416 282 L260 356 L224 492 L308 492 Z" fill="url(#wrapFrontCream)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Outer Pink Wrap Skirt -->
+    <path d="M126 312 Q260 368 394 312 L316 502 C308 514, 212 514, 204 502 Z" fill="url(#wrapFoldPink)" stroke="#FFFFFF" stroke-width="3"/>
+    <!-- Decorative Blue Trim Line on Wrap -->
+    <path d="M142 332 Q260 384 378 332" stroke="#4A7C9D" stroke-width="2.5" stroke-dasharray="6 4" fill="none"/>
+
+    <!-- 9. GIANT COQUETTE RIBBON BOW AT WAIST -->
+    <g filter="url(#flowerShadow)">
+      <!-- Ribbon Tails -->
+      <path d="M250 422 C232 458, 204 496, 182 528 L210 520 L220 534 C236 498, 248 462, 256 426 Z" fill="url(#ribbonBowBlue)" stroke="#FFFFFF" stroke-width="2.5"/>
+      <path d="M270 422 C288 458, 316 496, 338 528 L310 520 L300 534 C284 498, 272 462, 264 426 Z" fill="url(#ribbonBowBlue)" stroke="#FFFFFF" stroke-width="2.5"/>
+      <!-- Left Bow Loop -->
+      <path d="M254 414 C216 368, 162 374, 166 414 C170 452, 222 446, 254 418 Z" fill="url(#ribbonBowBlue)" stroke="#FFFFFF" stroke-width="3"/>
+      <!-- Right Bow Loop -->
+      <path d="M266 414 C304 368, 358 374, 354 414 C350 452, 298 446, 266 418 Z" fill="url(#ribbonBowBlue)" stroke="#FFFFFF" stroke-width="3"/>
+      <!-- Center Knot -->
+      <rect x="244" y="396" width="32" height="34" rx="12" fill="#4A7C9D" stroke="#FFFFFF" stroke-width="3"/>
+      <path d="M260 420 C260 420, 251 413, 251 408 C251 404, 255 402, 258 402 C259 402, 260 403, 260 405 C260 403, 261 402, 262 402 C265 402, 269 404, 269 408 C269 413, 260 420, 260 420 Z" fill="#FFD9E4"/>
+    </g>
+
+    <!-- 10. HANGING GIFT TAG ("For M 🩵") -->
+    <g transform="translate(315, 435) rotate(14)">
+      <rect x="0" y="0" width="76" height="40" rx="8" fill="#FFFDF9" stroke="#D98B98" stroke-width="2"/>
+      <circle cx="10" cy="20" r="3.5" fill="#4A7C9D"/>
+      <text x="42" y="25" text-anchor="middle" font-family="cursive, sans-serif" font-weight="bold" font-size="16" fill="#2A4C66">For M 🩵</text>
+    </g>
+  </g>
+</svg>

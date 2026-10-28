@@ -22,6 +22,10 @@ function runVerification() {
 
   // 1. Check all required DOM IDs
   const requiredIds = [
+    'openingBouquetModal',
+    'btnAcceptBouquet',
+    'giantBouquetTrigger',
+    'btnReplayBouquet',
     'bgFloatingItems',
     'heroPosterCard',
     'lightboxModal',
@@ -64,6 +68,10 @@ function runVerification() {
   // 3. Check Lively Floating Background Elements (Clean SVG Vector Assets, Not Cropped Poster Stickers)
   console.log('\n--- 3. Memeriksa Aset Floating Background (Besar & Bersih Tanpa Crop Poster) ---');
   assert(!html.includes('sticker-blue-ribbon.png') && !html.includes('sticker-heart-balloon.png'), 'Aset potongan poster lama sudah tidak dipakai untuk stiker melayang');
+  assert(
+    html.includes('giant-bouquet.svg') && css.includes('.bouquet-opening-overlay'),
+    'Opening Pop-up Buket Bunga Raksasa (Matahari & Mawar) terpasang lengkap dengan transisi halus'
+  );
   assert(
     html.includes('float-balloon-duo.svg') &&
     html.includes('float-bow-blue.svg') &&

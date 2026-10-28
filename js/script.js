@@ -100,6 +100,67 @@ document.addEventListener('DOMContentLoaded', () => {
   initFloatingBackground();
 
   /* ==========================================================================
+     1B. Opening Giant Mixed Bouquet Pop-Up Controller (Smooth Bloom & Reveal)
+     ========================================================================== */
+  const openingBouquetModal = document.getElementById('openingBouquetModal');
+  const btnAcceptBouquet = document.getElementById('btnAcceptBouquet');
+  const giantBouquetTrigger = document.getElementById('giantBouquetTrigger');
+  const btnReplayBouquet = document.getElementById('btnReplayBouquet');
+
+  function closeOpeningBouquet() {
+    if (!openingBouquetModal || !openingBouquetModal.classList.contains('active')) return;
+
+    openingBouquetModal.classList.add('closing');
+    openingBouquetModal.classList.remove('active');
+    document.body.style.overflow = '';
+
+    // Trigger celebration chimes & confetti burst as the scrapbook reveals
+    playCelebrationChimes();
+    launchConfetti(window.innerWidth / 2, window.innerHeight * 0.38, 125);
+
+    setTimeout(() => {
+      openingBouquetModal.classList.remove('closing');
+    }, 800);
+  }
+
+  function openOpeningBouquet() {
+    if (!openingBouquetModal) return;
+    openingBouquetModal.classList.remove('closing');
+    openingBouquetModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  if (openingBouquetModal && openingBouquetModal.classList.contains('active')) {
+    document.body.style.overflow = 'hidden';
+  }
+
+  if (btnAcceptBouquet) {
+    btnAcceptBouquet.addEventListener('click', closeOpeningBouquet);
+  }
+
+  if (giantBouquetTrigger) {
+    giantBouquetTrigger.addEventListener('click', closeOpeningBouquet);
+    giantBouquetTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        closeOpeningBouquet();
+      }
+    });
+  }
+
+  if (openingBouquetModal) {
+    openingBouquetModal.addEventListener('click', (e) => {
+      if (e.target === openingBouquetModal) {
+        closeOpeningBouquet();
+      }
+    });
+  }
+
+  if (btnReplayBouquet) {
+    btnReplayBouquet.addEventListener('click', openOpeningBouquet);
+  }
+
+  /* ==========================================================================
      2. Hero Poster Fullscreen Lightbox Preview
      ========================================================================== */
   const heroPosterCard = document.getElementById('heroPosterCard');
@@ -142,8 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('active')) {
-      closePosterModal();
+    if (e.key === 'Escape') {
+      if (openingBouquetModal && openingBouquetModal.classList.contains('active')) {
+        closeOpeningBouquet();
+      } else if (lightboxModal && lightboxModal.classList.contains('active')) {
+        closePosterModal();
+      }
     }
   });
 

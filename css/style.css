@@ -369,6 +369,256 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   2B. Opening Giant Mixed Bouquet Pop-Up Overlay (Smooth 3D Bloom & Exit)
+   -------------------------------------------------------------------------- */
+.bouquet-opening-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(244, 165, 184, 0.9) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(122, 178, 218, 0.9) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(252, 224, 234, 0.96) 0%, rgba(222, 238, 251, 0.96) 50%, rgba(251, 228, 236, 0.96) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.bouquet-opening-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.bouquet-opening-overlay.closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bouquet-ambient-glow {
+  position: absolute;
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 245, 200, 0.65) 0%, rgba(244, 165, 184, 0.45) 45%, rgba(122, 178, 218, 0) 72%);
+  filter: blur(25px);
+  animation: bouquetGlowPulse 4.5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes bouquetGlowPulse {
+  0% { transform: scale(0.92); opacity: 0.75; }
+  100% { transform: scale(1.12); opacity: 1; }
+}
+
+/* Floating Petals Around Opening Modal */
+.bouquet-floating-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.petal-item {
+  position: absolute;
+  font-size: 1.85rem;
+  opacity: 0.75;
+  filter: drop-shadow(0 4px 8px rgba(74, 124, 157, 0.18));
+  animation: petalFloatAround 7s ease-in-out infinite alternate;
+}
+
+.petal-item.p-1 { top: 10%; left: 12%; animation-duration: 6.5s; }
+.petal-item.p-2 { top: 14%; right: 14%; animation-duration: 7.4s; animation-delay: -1.5s; }
+.petal-item.p-3 { top: 46%; left: 7%; animation-duration: 8s; animation-delay: -3s; }
+.petal-item.p-4 { top: 48%; right: 8%; animation-duration: 6.8s; animation-delay: -2s; }
+.petal-item.p-5 { bottom: 16%; left: 15%; animation-duration: 7.2s; animation-delay: -4s; }
+.petal-item.p-6 { bottom: 14%; right: 14%; animation-duration: 8.3s; animation-delay: -1s; }
+.petal-item.p-7 { top: 26%; left: 22%; animation-duration: 7.7s; animation-delay: -2.5s; }
+.petal-item.p-8 { bottom: 28%; right: 20%; animation-duration: 6.9s; animation-delay: -3.5s; }
+
+@keyframes petalFloatAround {
+  0% { transform: translateY(0) translateX(0) rotate(-14deg) scale(0.92); }
+  50% { transform: translateY(-22px) translateX(12px) rotate(12deg) scale(1.08); }
+  100% { transform: translateY(16px) translateX(-10px) rotate(-8deg) scale(0.96); }
+}
+
+/* Popup Card Container */
+.bouquet-popup-card {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  width: 100%;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 244, 247, 0.94) 50%, rgba(235, 245, 254, 0.94) 100%);
+  border: 2.5px solid #ffffff;
+  outline: 2px dashed rgba(217, 139, 152, 0.55);
+  outline-offset: -10px;
+  border-radius: 30px;
+  padding: 2rem 2rem 2.25rem;
+  text-align: center;
+  box-shadow:
+    0 28px 65px -12px rgba(35, 53, 68, 0.3),
+    0 10px 28px -6px rgba(181, 103, 117, 0.22);
+  transform: translateY(36px) scale(0.84);
+  opacity: 0;
+  transition:
+    transform 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.65s ease;
+}
+
+.bouquet-opening-overlay.active .bouquet-popup-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.bouquet-opening-overlay.closing .bouquet-popup-card {
+  transform: translateY(-45px) scale(1.08);
+  opacity: 0;
+}
+
+.bouquet-badge-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(90deg, var(--pink-soft), #fff6d6, var(--denim-soft));
+  color: var(--denim-900);
+  font-family: var(--font-hand);
+  font-size: 1.28rem;
+  font-weight: 700;
+  padding: 0.35rem 1.2rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px dashed rgba(217, 139, 152, 0.65);
+  box-shadow: 0 3px 10px rgba(217, 139, 152, 0.18);
+  margin-bottom: 0.5rem;
+}
+
+/* Giant Bouquet Stage & Breathing Animation */
+.giant-bouquet-stage {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.giant-bouquet-stage:hover {
+  transform: scale(1.04) rotate(-1.5deg);
+}
+
+.bouquet-aura-ring {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 224, 130, 0.48) 0%, rgba(244, 165, 184, 0.36) 55%, transparent 75%);
+  z-index: 0;
+  animation: bouquetGlowPulse 3.5s ease-in-out infinite alternate;
+}
+
+.giant-bouquet-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  transform-origin: bottom center;
+  animation: bouquetGentleSway 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes bouquetGentleSway {
+  0% { transform: translateY(0px) rotate(-1.8deg) scale(0.99); }
+  100% { transform: translateY(-10px) rotate(1.8deg) scale(1.03); }
+}
+
+.bouquet-sparkle {
+  position: absolute;
+  z-index: 2;
+  font-size: 1.5rem;
+  pointer-events: none;
+  animation: sparkleTwinkle 2.4s ease-in-out infinite alternate;
+}
+
+.bouquet-sparkle.sp-1 { top: 8%; left: 10%; animation-delay: 0s; }
+.bouquet-sparkle.sp-2 { top: 12%; right: 10%; animation-delay: -0.8s; }
+.bouquet-sparkle.sp-3 { bottom: 22%; left: 8%; animation-delay: -1.4s; }
+.bouquet-sparkle.sp-4 { bottom: 20%; right: 8%; animation-delay: -0.4s; }
+
+@keyframes sparkleTwinkle {
+  0% { transform: scale(0.75) rotate(-10deg); opacity: 0.55; }
+  100% { transform: scale(1.22) rotate(15deg); opacity: 1; }
+}
+
+.bouquet-popup-title {
+  font-family: var(--font-hand);
+  font-size: clamp(2.2rem, 5.5vw, 3rem);
+  font-weight: 700;
+  color: var(--denim-900);
+  line-height: 1.15;
+  margin-bottom: 0.45rem;
+}
+
+.bouquet-popup-title .title-pink {
+  color: var(--pink-dark);
+}
+
+.bouquet-popup-title .title-accent {
+  color: var(--denim-primary);
+}
+
+.bouquet-popup-subtitle {
+  font-size: 0.98rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto 1.35rem;
+}
+
+.btn-accept-bouquet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--pink-dark), var(--denim-primary));
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  min-height: 52px;
+  padding: 0.95rem 2.2rem;
+  border-radius: var(--radius-pill);
+  box-shadow:
+    0 10px 26px rgba(181, 103, 117, 0.42),
+    0 0 0 4px rgba(255, 255, 255, 0.8);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  animation: btnPulseSoft 2.6s ease-in-out infinite;
+}
+
+.btn-accept-bouquet:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 14px 32px rgba(74, 124, 157, 0.48),
+    0 0 0 5px rgba(255, 255, 255, 0.95);
+}
+
+@keyframes btnPulseSoft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* --------------------------------------------------------------------------
    3. Utility & Scrapbook Decorative Elements
    -------------------------------------------------------------------------- */
 .container {
@@ -1746,6 +1996,35 @@ a {
 }
 
 @media (max-width: 600px) {
+  .bouquet-popup-card {
+    padding: 1.5rem 1.15rem 1.75rem;
+    border-radius: 24px;
+  }
+
+  .bouquet-badge-top {
+    font-size: 1.08rem;
+    padding: 0.3rem 0.9rem;
+  }
+
+  .giant-bouquet-stage {
+    max-width: 265px;
+  }
+
+  .giant-bouquet-img {
+    max-height: 255px;
+  }
+
+  .bouquet-popup-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 1.15rem;
+  }
+
+  .btn-accept-bouquet {
+    width: 100%;
+    font-size: 0.98rem;
+    padding: 0.88rem 1.4rem;
+  }
+
   .container {
     padding-left: 0.95rem;
     padding-right: 0.95rem;
