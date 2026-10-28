@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 function runVerification() {
-  console.log('=== VERIFIKASI INTEGRITAS WEBSITE (REVISI PINK & BIRU) ===');
+  console.log('=== VERIFIKASI INTEGRITAS WEBSITE (REVISI FLOATING BG & AUDIO AUTO-START) ===');
 
   const html = fs.readFileSync('index.html', 'utf8');
   const css = fs.readFileSync('css/style.css', 'utf8');
@@ -20,8 +20,9 @@ function runVerification() {
     }
   }
 
-  // 1. Check all required DOM IDs in script.js against index.html
+  // 1. Check all required DOM IDs
   const requiredIds = [
+    'bgFloatingItems',
     'heroPosterCard',
     'lightboxModal',
     'lightboxImg',
@@ -42,7 +43,8 @@ function runVerification() {
     'toastAlert',
     'toastMessage',
     'floatingTopBtn',
-    'btnScrollTopFooter'
+    'btnScrollTopFooter',
+    'btnMusicToggle'
   ];
 
   console.log('\n--- 1. Memeriksa ID Elemen HTML yang Dibutuhkan JS ---');
@@ -51,38 +53,25 @@ function runVerification() {
     assert(hasId, `ID elemen '#${id}' ditemukan di index.html`);
   });
 
-  // 2. Check Gallery Removal
-  console.log('\n--- 2. Memeriksa Penghapusan Bagian Galeri Kenangan ---');
-  assert(!html.includes('id="gallery"'), 'Bagian #gallery sudah dihapus dari index.html');
-  assert(!html.includes('href="#gallery"'), 'Tautan navigasi #gallery sudah dihapus');
-  assert(!html.includes('Galeri Kenangan Manis'), 'Judul Galeri Kenangan sudah dihapus');
-
-  // 3. Check Updated Letter Content
-  console.log('\n--- 3. Memeriksa Isi Surat Ulang Tahun Baru ---');
+  // 2. Check removal of "2 years / 2 tahun" outside the letter body
+  console.log('\n--- 2. Memeriksa Penghapusan "2 Years / 2 Tahun" di Luar Isi Surat ---');
+  const twoYearMatches = html.match(/2\s*(tahun|years)/gi) || [];
   assert(
-    html.includes('Selamat ulang tahun, ya M sayangku yang udah 2 tahun bareng aku.'),
-    'Paragraf 1 surat sesuai revisi pengguna'
-  );
-  assert(
-    html.includes('Kalau nanti ada hari yang terasa berat, mungkin selama ini aku ga banyak membantu'),
-    'Paragraf 2 surat sesuai revisi pengguna'
-  );
-  assert(
-    html.includes('Terima kasih sudah menjadi pribadi yang positif.'),
-    'Paragraf 3 surat sesuai revisi pengguna'
-  );
-  assert(
-    html.includes('Selamat 21 sekali lagi. Semoga selalu sayang aku. Kamu selalu dikelilingi hal-hal yang membuatmu merasa disayangi, dihargai, dan cukup menjadi dirimu sendiri, at your own best, ayy. ♡'),
-    'Paragraf 4 surat sesuai revisi pengguna'
+    twoYearMatches.length === 1 && html.includes('Selamat ulang tahun, ya M sayangku yang udah 2 tahun bareng aku.'),
+    `Kata "2 tahun / 2 years" hanya muncul tepat 1 kali di dalam isi surat (ditemukan: ${twoYearMatches.length})`
   );
 
-  // 4. CSS Verification (Pink & Blue Background Theme)
-  console.log('\n--- 4. Memeriksa CSS & Kombinasi Background Pink + Biru ---');
-  assert(css.includes('--denim-primary: #4a7c9d;'), 'Token warna Biru Denim terdefinisi di CSS');
-  assert(css.includes('--pink-primary: #d98b98;'), 'Token warna Dusty Pink terdefinisi di CSS');
-  assert(css.includes('.bg-decor-layer') && css.includes('.bg-orb-pink-1') && css.includes('.bg-orb-blue-1'), 'Layer dekorasi background kombinasi Pink & Biru aktif');
-  assert(css.includes('prefers-reduced-motion'), 'Dukungan prefers-reduced-motion tersedia');
-  assert(css.includes('@media (max-width: 600px)'), 'Media query responsif ponsel tersedia');
+  // 3. Check Lively Floating Background Elements
+  console.log('\n--- 3. Memeriksa Animasi Floating Background Pink & Biru ---');
+  assert(html.includes('class="bg-floating-sticker'), 'Stiker melayang di background tersedia di HTML');
+  assert(css.includes('@keyframes floatUpAndSway') && css.includes('@keyframes orbDrift1'), 'Animasi keyframes floating & aurora drift tersedia di CSS');
+  assert(js.includes('initFloatingBackground'), 'Generator elemen floating (hati, bunga, pita, bubble) aktif di JS');
+
+  // 4. Check Louder Music & Auto-Start on First Interaction + Manual Toggle
+  console.log('\n--- 4. Memeriksa Audio Musik (Suara Lebih Keras + Auto-Start + Toggle Manual) ---');
+  assert(js.includes('createDynamicsCompressor') && js.includes('0.58'), 'Volume musik sudah diperbesar dengan multi-layer oscillator & compressor');
+  assert(js.includes('tryStartMusicOnInteraction') && js.includes('touchstart') && js.includes('mousemove'), 'Deteksi klik/sentuhan/pergerakan pertama untuk auto-play musik aktif');
+  assert(js.includes('Musik: ON') && js.includes('Musik: OFF'), 'Tombol manual ON/OFF musik tersedia');
 
   // 5. Relative paths check for GitHub Pages compatibility
   console.log('\n--- 5. Memeriksa Kompatibilitas Relative Path (GitHub Pages) ---');

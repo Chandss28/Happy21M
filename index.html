@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -8,16 +9,18 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="format-detection" content="telephone=no">
   <title>Happy 21st Birthday, M 🩵 | Scrapbook Digital</title>
-  
+
   <!-- SEO & Social Sharing Metadata (WhatsApp / Instagram / Line / Telegram) -->
-  <meta name="description" content="Selamat ulang tahun ke-21, M sayangku! Scrapbook spesial dan sepucuk surat tulus untuk merayakan usia barumu & 2 tahun kebersamaan kita 🩵🌸">
+  <meta name="description"
+    content="Selamat ulang tahun ke-21, M! Scrapbook digital spesial penuh doa dan harapan terbaik di hari ulang tahunmu 🩵🌸">
   <meta name="keywords" content="Happy 21st Birthday M, Ulang Tahun ke-21, Scrapbook Digital, Kartu Ucapan Ulang Tahun">
   <meta name="author" content="Untuk M">
 
   <!-- Open Graph / WhatsApp / Facebook Preview -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Happy 21st Birthday, M 🩵🌸">
-  <meta property="og:description" content="Buka scrapbook spesial & surat ulang tahun ke-21 untuk M sayangku. Selamat 21 & 2 tahun bareng aku! ♡">
+  <meta property="og:description"
+    content="Buka scrapbook spesial & surat ulang tahun ke-21 untuk M tersayang 🩵🌸">
   <meta property="og:image" content="./assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -36,20 +39,34 @@
   <!-- Google Fonts: Caveat (Handwritten Scrapbook) & Plus Jakarta Sans (Clean Legible Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
-  <!-- Fixed Mobile-Safe Pink & Blue Theme Background Layer -->
+  <!-- Animated Pink & Blue Theme Background + Floating Decorations Layer -->
   <div class="bg-decor-layer" aria-hidden="true">
     <div class="bg-orb bg-orb-pink-1"></div>
     <div class="bg-orb bg-orb-blue-1"></div>
     <div class="bg-orb bg-orb-pink-2"></div>
     <div class="bg-orb bg-orb-blue-2"></div>
     <div class="bg-orb bg-orb-center"></div>
+
+    <!-- Decorative Floating Scrapbook Stickers in Background -->
+    <img src="./assets/sticker-heart-balloon.png" alt="" class="bg-floating-sticker bg-sticker-1">
+    <img src="./assets/sticker-blue-ribbon.png" alt="" class="bg-floating-sticker bg-sticker-2">
+    <img src="./assets/sticker-flower-bouquet.png" alt="" class="bg-floating-sticker bg-sticker-3">
+    <img src="./assets/sticker-flower-bottom.png" alt="" class="bg-floating-sticker bg-sticker-4">
+    <img src="./assets/sticker-blue-ribbon.png" alt="" class="bg-floating-sticker bg-sticker-5">
+    <img src="./assets/sticker-heart-balloon.png" alt="" class="bg-floating-sticker bg-sticker-6">
+
+    <!-- Dynamic Continuous Floating Hearts, Blossoms, Ribbons & Sparkles Container -->
+    <div id="bgFloatingItems" class="bg-floating-items"></div>
   </div>
 
   <!-- Background Particle Confetti Canvas -->
@@ -61,8 +78,8 @@
       <a href="#hero" class="nav-link active">🏠 Beranda</a>
       <a href="#letter" class="nav-link">💌 Surat</a>
       <a href="#celebration" class="nav-link">🎂 Harapan</a>
-      <button type="button" id="btnMusicToggle" class="nav-btn-music" title="Nyalakan/Matikan Musik Kotak Musik">
-        <span>🎵</span> <span>Musik</span>
+      <button type="button" id="btnMusicToggle" class="nav-btn-music playing" aria-pressed="true" title="Nyalakan/Matikan Musik Secara Manual">
+        <span>🎶</span> <span>Musik: ON</span>
       </button>
       <button type="button" class="nav-btn-confetti trigger-confetti" title="Letupkan Confetti">
         <span>🎉</span> <span>Rayakan</span>
@@ -77,12 +94,12 @@
     <section id="hero" class="hero-section">
       <div class="container">
         <div class="hero-grid">
-          
+
           <!-- Left Column: Title & Scrapbook Message -->
           <div class="hero-content">
             <div class="hero-greeting">
               <span>🌸</span>
-              <span>21 TAHUN SPESIAL • 2 TAHUN BERSAMAMU</span>
+              <span>21 TAHUN SPESIAL UNTUK M</span>
               <span>🩵</span>
             </div>
 
@@ -91,12 +108,14 @@
             </h1>
 
             <p class="hero-description">
-              Halaman scrapbook bertema biru dan pink ini dirangkai khusus untuk merayakan hari lahirmu yang ke-21 sekaligus dua tahun perjalanan manis kita. Ada sepucuk surat dari hati dan doa terbaik yang siap menemani langkah barumu.
+              Selamat datang di halaman scrapbook kecil bernuansa pink dan biru ini. Dirangkai khusus untuk merayakan
+              hari ulang tahunmu yang ke-21, lengkap dengan sepucuk surat tulus dan doa-doa terbaik untuk menyambut
+              babak baru di usiamu.
             </p>
 
             <div class="hero-theme-pills" aria-hidden="true">
               <span class="theme-pill pill-pink">🌸 Sweet Twenty-One</span>
-              <span class="theme-pill pill-blue">🩵 2 Years With You</span>
+              <span class="theme-pill pill-blue">🩵 Birthday Girl</span>
               <span class="theme-pill pill-mix">✨ At Your Own Best</span>
             </div>
 
@@ -117,21 +136,26 @@
 
             <div class="hero-sticky-note">
               <p>
-                "Selamat 21, sayangku. Semoga langkahmu selalu hangat, tenang, dan dikelilingi hal-hal baik yang tulus. ♡"
+                "Selamat 21, sayangku. Semoga langkahmu selalu hangat, tenang, dan dikelilingi hal-hal baik yang tulus.
+                ♡"
               </p>
             </div>
           </div>
 
           <!-- Right Column: Scrapbook Polaroid Poster Frame -->
           <div class="hero-showcase">
-            <div class="hero-polaroid-frame" id="heroPosterCard" tabindex="0" role="button" aria-label="Perbesar Poster Kolase Ulang Tahun ke-21 M">
+            <div class="hero-polaroid-frame" id="heroPosterCard" tabindex="0" role="button"
+              aria-label="Perbesar Poster Kolase Ulang Tahun ke-21 M">
               <div class="washi-tape tape-denim tape-top-left"></div>
               <div class="washi-tape tape-pink tape-top-right"></div>
-              
+
               <!-- Floating Scrapbook Badges & Stickers -->
-              <img src="./assets/sticker-blue-ribbon.png" alt="" class="scrapbook-sticker sticker-ribbon-hero" width="68" height="58" aria-hidden="true">
-              <img src="./assets/sticker-heart-balloon.png" alt="" class="scrapbook-sticker sticker-balloon-hero" width="64" height="64" aria-hidden="true">
-              <img src="./assets/sticker-flower-bouquet.png" alt="" class="scrapbook-sticker sticker-bouquet-hero" width="62" height="62" aria-hidden="true">
+              <img src="./assets/sticker-blue-ribbon.png" alt="" class="scrapbook-sticker sticker-ribbon-hero"
+                width="68" height="58" aria-hidden="true">
+              <img src="./assets/sticker-heart-balloon.png" alt="" class="scrapbook-sticker sticker-balloon-hero"
+                width="64" height="64" aria-hidden="true">
+              <img src="./assets/sticker-flower-bouquet.png" alt="" class="scrapbook-sticker sticker-bouquet-hero"
+                width="62" height="62" aria-hidden="true">
 
               <div class="badge-stamp-21" aria-hidden="true">
                 <span>Turning</span>
@@ -139,19 +163,13 @@
               </div>
               <div class="badge-tag-special" aria-hidden="true">
                 <span>🩵</span>
-                <span>2 Years &amp; Counting</span>
+                <span>Scrapbook Edition</span>
               </div>
 
               <!-- Main Birthday Poster -->
               <div class="hero-poster-wrapper">
-                <img 
-                  src="./assets/birthday-poster.png" 
-                  alt="Poster Kolase Ulang Tahun ke-21 M" 
-                  class="hero-poster-img"
-                  width="575"
-                  height="1024"
-                  loading="eager"
-                >
+                <img src="./assets/birthday-poster.png" alt="Poster Kolase Ulang Tahun ke-21 M" class="hero-poster-img"
+                  width="575" height="1024" loading="eager">
                 <div class="poster-zoom-hint">
                   <span>🔍</span> <span>Ketuk untuk perbesar</span>
                 </div>
@@ -187,7 +205,7 @@
           </div>
           <h2 class="section-title">Sepucuk Surat untuk M</h2>
           <p class="section-subtitle">
-            Ditulis dengan tulus untuk merayakan usia barumu dan dua tahun kebersamaan kita.
+            Ditulis dari hati yang tulus untuk merayakan hari kelahiranmu yang ke-21.
           </p>
         </div>
 
@@ -201,7 +219,8 @@
           </div>
           <h3 class="envelope-heading">Amplop Spesial untuk M</h3>
           <p class="envelope-teaser-text">
-            Ada pesan dan doa hangat yang kutulis khusus untukmu di hari ulang tahun ke-21 ini. Tekan tombol di bawah untuk membuka amplopnya.
+            Ada pesan dan doa hangat yang kutulis khusus untukmu di hari ulang tahun ke-21 ini. Tekan tombol di bawah
+            untuk membuka amplopnya.
           </p>
           <button type="button" id="btnOpenLetter" class="btn-open-letter">
             <span>Buka Surat Ulang Tahun</span>
@@ -217,7 +236,7 @@
         <div id="letterPaperWrapper" class="letter-paper-wrapper" aria-live="polite">
           <article class="letter-paper">
             <div class="washi-tape tape-denim tape-top-center"></div>
-            
+
             <!-- Postage Stamp in Top Right -->
             <div class="paper-stamp" aria-hidden="true">
               <span>🌸🩵</span>
@@ -232,19 +251,26 @@
             <!-- Letter Content -->
             <div class="letter-body">
               <p>
-                Selamat ulang tahun, ya M sayangku yang udah 2 tahun bareng aku. Semoga umur baru ini membawa banyak hal baik dari kesehatan, hati yang lebih tenang, orang-orang yang tulus, dan kesempatan untuk tumbuh menjadi diri kamu dengan target kamu yang terbaik.
+                Selamat ulang tahun, ya M sayangku yang udah 2 tahun bareng aku. Semoga umur baru ini membawa banyak hal
+                baik dari kesehatan, hati yang lebih tenang, orang-orang yang tulus, dan kesempatan untuk tumbuh menjadi
+                diri kamu dengan target kamu yang terbaik.
               </p>
 
               <p>
-                Kalau nanti ada hari yang terasa berat, mungkin selama ini aku ga banyak membantu, tapi aku selalu berdoa yang terbaik buat kamu dan semoga kamu tetap ingat bahwa kamu sudah berjalan sejauh ini. Selalu pelan-pelan juga tetap maju, dan istirahat pun bagian dari perjalanan.
+                Kalau nanti ada hari yang terasa berat, mungkin selama ini aku ga banyak membantu, tapi aku selalu
+                berdoa yang terbaik buat kamu dan semoga kamu tetap ingat bahwa kamu sudah berjalan sejauh ini. Selalu
+                pelan-pelan juga tetap maju, dan istirahat pun bagian dari perjalanan.
               </p>
 
               <p>
-                Terima kasih sudah menjadi pribadi yang positif. Semoga halaman-halaman di hari berikutnya diisi tawa yang lebih lepas, kejutan kecil yang menyenangkan, dan mimpi-mimpi yang satu per satu menemukan jalannya.
+                Terima kasih sudah menjadi pribadi yang positif. Semoga halaman-halaman di hari berikutnya diisi tawa
+                yang lebih lepas, kejutan kecil yang menyenangkan, dan mimpi-mimpi yang satu per satu menemukan
+                jalannya.
               </p>
 
               <p>
-                Selamat 21 sekali lagi. Semoga selalu sayang aku. Kamu selalu dikelilingi hal-hal yang membuatmu merasa disayangi, dihargai, dan cukup menjadi dirimu sendiri, at your own best, ayy. ♡
+                Selamat 21 sekali lagi. Semoga selalu sayang aku. Kamu selalu dikelilingi hal-hal yang membuatmu merasa
+                disayangi, dihargai, dan cukup menjadi dirimu sendiri, at your own best, ayy. ♡
               </p>
             </div>
 
@@ -280,7 +306,7 @@
          ======================================================================== -->
     <section id="celebration" class="celebration-section">
       <div class="container container-narrow">
-        
+
         <div class="wish-card">
           <div class="washi-tape tape-denim tape-top-left"></div>
           <div class="washi-tape tape-pink tape-top-right"></div>
@@ -292,13 +318,15 @@
 
           <h2 class="section-title">Panjatkan Sebuah Harapan</h2>
           <p class="section-subtitle">
-            Tutup matamu sebentar, ucapkan doa terbaik dalam hati untuk usiamu yang ke-21, lalu tekan tombol untuk meniup lilinnya!
+            Tutup matamu sebentar, ucapkan doa terbaik dalam hati untuk usiamu yang ke-21, lalu tekan tombol untuk
+            meniup lilinnya!
           </p>
 
           <!-- Interactive Cake Graphic -->
           <div class="cake-interactive-area">
             <div class="cake-img-wrapper">
-              <img src="./assets/sticker-cake.png" alt="Kue Ulang Tahun ke-21" class="cake-img" width="125" height="130">
+              <img src="./assets/sticker-cake.png" alt="Kue Ulang Tahun ke-21" class="cake-img" width="125"
+                height="130">
               <!-- Animated Candle Flame -->
               <div id="candleFlame" class="candle-flame" title="Api Lilin"></div>
               <!-- Smoke Effect -->
@@ -315,7 +343,8 @@
           <div id="wishRevealBox" class="wish-reveal-box" role="alert">
             <h3 class="wish-reveal-title">Aamiin, Doa Terbaik Untukmu! ✨</h3>
             <p class="wish-reveal-text">
-              "Semoga semua harapan dan target terbaikmu di usia 21 ini satu per satu menemukan jalannya. Tetaplah tumbuh menjadi dirimu sendiri, at your own best, ayy!" 🩵🌸
+              "Semoga semua harapan dan target terbaikmu di usia 21 ini satu per satu menemukan jalannya. Tetaplah
+              tumbuh menjadi dirimu sendiri, at your own best, ayy!" 🩵🌸
             </p>
           </div>
 
@@ -345,7 +374,7 @@
          ======================================================================== -->
     <section id="closing" class="closing-section">
       <div class="container container-narrow">
-        
+
         <div class="closing-card">
           <div class="washi-tape tape-pink tape-top-right"></div>
           <div class="washi-tape tape-denim tape-top-left"></div>
@@ -355,7 +384,8 @@
           </p>
 
           <p class="closing-subtext">
-            Semoga halaman kecil bernuansa biru dan pink ini selalu jadi pengingat hangat betapa kamu disayangi dan dihargai setiap harinya.
+            Semoga halaman kecil bernuansa biru dan pink ini selalu jadi pengingat hangat betapa kamu disayangi dan
+            dihargai setiap harinya.
           </p>
 
           <div class="closing-actions">
@@ -387,7 +417,7 @@
         Created with all my heart for M's 21st Birthday 🩵🌸
       </p>
       <p class="footer-copy">
-        21st Birthday Scrapbook • 2 Years Together &amp; Always At Your Own Best ♡
+        Digital Scrapbook Edition • Dibuat khusus untuk merayakan usia ke-21 M ♡
       </p>
     </div>
   </footer>
@@ -395,17 +425,20 @@
   <!-- ==========================================================================
        LIGHTBOX MODAL FOR POSTER PREVIEW
        ========================================================================== -->
-  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Pratinjau Poster Ulang Tahun">
+  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true"
+    aria-label="Pratinjau Poster Ulang Tahun">
     <div class="lightbox-content-box">
-      <button type="button" id="lightboxCloseBtn" class="lightbox-close-btn" aria-label="Tutup Pratinjau Poster">✕</button>
-      
+      <button type="button" id="lightboxCloseBtn" class="lightbox-close-btn"
+        aria-label="Tutup Pratinjau Poster">✕</button>
+
       <div class="lightbox-image-wrapper">
         <img id="lightboxImg" src="./assets/birthday-poster.png" alt="Poster Kolase Ulang Tahun ke-21 M">
       </div>
 
       <div class="lightbox-info-bar">
         <h3 id="lightboxTitle" class="lightbox-title">M’s 21st Birthday Collage 🩵🌸</h3>
-        <p id="lightboxCaption" class="lightbox-caption">Rangkuman potret manis dan senyum terindah di hari ulang tahunmu yang ke-21.</p>
+        <p id="lightboxCaption" class="lightbox-caption">Rangkuman potret manis dan senyum terindah di hari ulang
+          tahunmu yang ke-21.</p>
       </div>
     </div>
   </div>
@@ -423,4 +456,5 @@
   <!-- JavaScript Logic -->
   <script src="./js/script.js"></script>
 </body>
+
 </html>

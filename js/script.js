@@ -1,9 +1,10 @@
 /**
- * BIRTHDAY M — 21st Scrapbook Digital Experience (Pink & Blue Theme Edition)
+ * BIRTHDAY M — 21st Scrapbook Digital Experience (Lively Animated Pink & Blue)
  * Features:
+ * - Continuous Floating Background Layer (Hearts, Blossoms, Ribbons, Sparkles & Pink/Blue Bubbles)
  * - Hero Poster Fullscreen Lightbox Preview
  * - Birthday Letter Foldable Envelope & Stationery Reveal
- * - Pure Web Audio API Gentle Music Box Player (Offline, Zero External Files)
+ * - Loud & Rich Web Audio API Music Box (Auto-Start on First Interaction/Movement + Manual ON/OFF Toggle)
  * - 3D Fluttering Confetti Particle Engine (Hearts, Stars, Ribbons, Circles)
  * - Candle Blowing with Smoke & Harmonious Wish Chime Sound Effect
  * - Floating Heart/Flower Reaction Emojis
@@ -15,7 +16,54 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   /* ==========================================================================
-     1. Hero Poster Fullscreen Lightbox Preview
+     1. Continuous Floating Background Layer (Pink & Blue Hearts, Flowers, Bubbles)
+     ========================================================================== */
+  const bgFloatingItems = document.getElementById('bgFloatingItems');
+
+  function initFloatingBackground() {
+    if (!bgFloatingItems) return;
+
+    const symbols = ['🩵', '🩷', '🌸', '🎀', '✨', '🩵', '🌸', '🩷', '♡', '⋆'];
+    const totalItems = window.innerWidth < 600 ? 20 : 30;
+
+    for (let i = 0; i < totalItems; i++) {
+      const el = document.createElement('div');
+      el.classList.add('bg-floater');
+
+      const isBubble = i % 3 === 0;
+      if (isBubble) {
+        el.classList.add('bg-floater-bubble');
+        el.classList.add(i % 2 === 0 ? 'bubble-pink' : 'bubble-blue');
+        const size = Math.floor(Math.random() * 24) + 14;
+        el.style.width = `${size}px`;
+        el.style.height = `${size}px`;
+      } else {
+        el.textContent = symbols[i % symbols.length];
+        const fontSize = (Math.random() * 0.95 + 1.05).toFixed(2);
+        el.style.fontSize = `${fontSize}rem`;
+        el.style.filter = 'drop-shadow(0 3px 6px rgba(74, 124, 157, 0.16))';
+      }
+
+      const leftPos = (Math.random() * 96 + 2).toFixed(2);
+      const duration = (Math.random() * 10 + 11).toFixed(2);
+      const delay = -(Math.random() * 20).toFixed(2);
+      const swayX = `${(Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 35) + 18)}px`;
+      const maxOpacity = isBubble ? (Math.random() * 0.35 + 0.45).toFixed(2) : (Math.random() * 0.35 + 0.52).toFixed(2);
+
+      el.style.left = `${leftPos}%`;
+      el.style.animationDuration = `${duration}s`;
+      el.style.animationDelay = `${delay}s`;
+      el.style.setProperty('--sway-x', swayX);
+      el.style.setProperty('--floater-opacity', maxOpacity);
+
+      bgFloatingItems.appendChild(el);
+    }
+  }
+
+  initFloatingBackground();
+
+  /* ==========================================================================
+     2. Hero Poster Fullscreen Lightbox Preview
      ========================================================================== */
   const heroPosterCard = document.getElementById('heroPosterCard');
   const lightboxModal = document.getElementById('lightboxModal');
@@ -63,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     2. Birthday Letter Interaction
+     3. Birthday Letter Interaction
      ========================================================================== */
   const btnOpenLetter = document.getElementById('btnOpenLetter');
   const btnCloseLetter = document.getElementById('btnCloseLetter');
@@ -94,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     3. Standalone Pure Canvas Confetti Engine (Ribbons, Hearts, Sparkles)
+     4. Standalone Pure Canvas Confetti Engine (Ribbons, Hearts, Sparkles)
      ========================================================================== */
   const confettiCanvas = document.getElementById('confettiCanvas');
   let confettiCtx = null;
@@ -231,40 +279,46 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     4. Web Audio API — Soft Music Box & Melodic Chimes (100% Offline)
+     5. Web Audio API — Loud & Clear Music Box (Auto-Start + Manual ON/OFF)
      ========================================================================== */
   let audioCtx = null;
+  let masterCompressor = null;
   let isMusicPlaying = false;
+  let isMusicWanted = true; // Default ON from initial load
   let musicTimer = null;
   let currentNoteIndex = 0;
+  const btnMusicToggle = document.getElementById('btnMusicToggle');
 
-  // Romantic music box melody (frequencies in Hz: F major / C major acoustic lullaby)
+  // Rich Happy Birthday Music Box Melody with Harmony (F Major)
   const musicBoxMelody = [
-    { note: 349.23, dur: 0.4 }, // F4
-    { note: 349.23, dur: 0.4 }, // F4
-    { note: 392.00, dur: 0.8 }, // G4
-    { note: 349.23, dur: 0.8 }, // F4
-    { note: 466.16, dur: 0.8 }, // Bb4
-    { note: 440.00, dur: 1.4 }, // A4
-    { note: 349.23, dur: 0.4 }, // F4
-    { note: 349.23, dur: 0.4 }, // F4
-    { note: 392.00, dur: 0.8 }, // G4
-    { note: 349.23, dur: 0.8 }, // F4
-    { note: 523.25, dur: 0.8 }, // C5
-    { note: 466.16, dur: 1.4 }, // Bb4
-    { note: 349.23, dur: 0.4 }, // F4
-    { note: 349.23, dur: 0.4 }, // F4
-    { note: 698.46, dur: 0.8 }, // F5
-    { note: 587.33, dur: 0.8 }, // D5
-    { note: 466.16, dur: 0.8 }, // Bb4
-    { note: 440.00, dur: 0.8 }, // A4
-    { note: 392.00, dur: 1.2 }, // G4
-    { note: 622.25, dur: 0.4 }, // Eb5
-    { note: 622.25, dur: 0.4 }, // Eb5
-    { note: 587.33, dur: 0.8 }, // D5
-    { note: 466.16, dur: 0.8 }, // Bb4
-    { note: 523.25, dur: 0.8 }, // C5
-    { note: 466.16, dur: 1.8 }  // Bb4
+    { note: 349.23, bass: 174.61, dur: 0.42 }, // F4
+    { note: 349.23, bass: 0,      dur: 0.38 }, // F4
+    { note: 392.00, bass: 174.61, dur: 0.78 }, // G4
+    { note: 349.23, bass: 220.00, dur: 0.78 }, // F4
+    { note: 466.16, bass: 261.63, dur: 0.78 }, // Bb4
+    { note: 440.00, bass: 196.00, dur: 1.35 }, // A4
+
+    { note: 349.23, bass: 196.00, dur: 0.42 }, // F4
+    { note: 349.23, bass: 0,      dur: 0.38 }, // F4
+    { note: 392.00, bass: 196.00, dur: 0.78 }, // G4
+    { note: 349.23, bass: 261.63, dur: 0.78 }, // F4
+    { note: 523.25, bass: 174.61, dur: 0.78 }, // C5
+    { note: 466.16, bass: 233.08, dur: 1.35 }, // Bb4
+
+    { note: 349.23, bass: 174.61, dur: 0.42 }, // F4
+    { note: 349.23, bass: 0,      dur: 0.38 }, // F4
+    { note: 698.46, bass: 174.61, dur: 0.82 }, // F5
+    { note: 587.33, bass: 220.00, dur: 0.78 }, // D5
+    { note: 466.16, bass: 233.08, dur: 0.78 }, // Bb4
+    { note: 440.00, bass: 261.63, dur: 0.78 }, // A4
+    { note: 392.00, bass: 196.00, dur: 1.25 }, // G4
+
+    { note: 622.25, bass: 233.08, dur: 0.42 }, // Eb5
+    { note: 622.25, bass: 0,      dur: 0.38 }, // Eb5
+    { note: 587.33, bass: 233.08, dur: 0.78 }, // D5
+    { note: 466.16, bass: 174.61, dur: 0.78 }, // Bb4
+    { note: 523.25, bass: 196.00, dur: 0.82 }, // C5
+    { note: 466.16, bass: 174.61, dur: 1.65 }  // Bb4
   ];
 
   function getAudioContext() {
@@ -272,79 +326,204 @@ document.addEventListener('DOMContentLoaded', () => {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (AudioContextClass) {
         audioCtx = new AudioContextClass();
+        // Add dynamics compressor so louder volume stays crystal clear without distortion
+        masterCompressor = audioCtx.createDynamicsCompressor();
+        masterCompressor.threshold.setValueAtTime(-14, audioCtx.currentTime);
+        masterCompressor.knee.setValueAtTime(20, audioCtx.currentTime);
+        masterCompressor.ratio.setValueAtTime(4, audioCtx.currentTime);
+        masterCompressor.attack.setValueAtTime(0.005, audioCtx.currentTime);
+        masterCompressor.release.setValueAtTime(0.2, audioCtx.currentTime);
+        masterCompressor.connect(audioCtx.destination);
       }
-    }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
     }
     return audioCtx;
   }
 
-  // Play a soft wooden music box note
-  function playMusicBoxNote(freq, duration = 0.6) {
+  // Play a loud, rich multi-layered music box note (clearly audible on phone & laptop speakers)
+  function playMusicBoxNote(freq, duration = 0.75, bassFreq = 0) {
     const ctx = getAudioContext();
-    if (!ctx) return;
+    if (!ctx || ctx.state !== 'running') return;
 
-    const osc = ctx.createOscillator();
-    const gainNode = ctx.createGain();
+    const now = ctx.currentTime;
+    const outputDest = masterCompressor || ctx.destination;
 
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(freq, ctx.currentTime);
+    // 1. Main warm bell tone (triangle + sine blend for strong speaker presence)
+    const oscMain = ctx.createOscillator();
+    const gainMain = ctx.createGain();
+    oscMain.type = 'triangle';
+    oscMain.frequency.setValueAtTime(freq, now);
 
-    gainNode.gain.setValueAtTime(0.0001, ctx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 0.015);
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+    gainMain.gain.setValueAtTime(0.001, now);
+    gainMain.gain.linearRampToValueAtTime(0.58, now + 0.018);
+    gainMain.gain.exponentialRampToValueAtTime(0.001, now + duration * 1.15);
 
-    osc.connect(gainNode);
-    gainNode.connect(ctx.destination);
+    oscMain.connect(gainMain);
+    gainMain.connect(outputDest);
+    oscMain.start(now);
+    oscMain.stop(now + duration * 1.2);
 
-    osc.start(ctx.currentTime);
-    osc.stop(ctx.currentTime + duration);
+    // 2. Music-box metallic chime overtone (2x frequency)
+    const oscChime = ctx.createOscillator();
+    const gainChime = ctx.createGain();
+    oscChime.type = 'sine';
+    oscChime.frequency.setValueAtTime(freq * 2, now);
+
+    gainChime.gain.setValueAtTime(0.001, now);
+    gainChime.gain.linearRampToValueAtTime(0.24, now + 0.01);
+    gainChime.gain.exponentialRampToValueAtTime(0.0008, now + duration * 0.75);
+
+    oscChime.connect(gainChime);
+    gainChime.connect(outputDest);
+    oscChime.start(now);
+    oscChime.stop(now + duration * 0.8);
+
+    // 3. Warm accompaniment bass note
+    if (bassFreq > 0) {
+      const oscBass = ctx.createOscillator();
+      const gainBass = ctx.createGain();
+      oscBass.type = 'sine';
+      oscBass.frequency.setValueAtTime(bassFreq, now);
+
+      gainBass.gain.setValueAtTime(0.001, now);
+      gainBass.gain.linearRampToValueAtTime(0.32, now + 0.025);
+      gainBass.gain.exponentialRampToValueAtTime(0.001, now + duration * 1.25);
+
+      oscBass.connect(gainBass);
+      gainBass.connect(outputDest);
+      oscBass.start(now);
+      oscBass.stop(now + duration * 1.3);
+    }
   }
 
   // Gentle celebration chime chord
   function playCelebrationChimes() {
     const ctx = getAudioContext();
     if (!ctx) return;
+    if (ctx.state === 'suspended') {
+      ctx.resume();
+    }
 
     const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
     notes.forEach((freq, idx) => {
       setTimeout(() => {
-        playMusicBoxNote(freq, 1.2);
-      }, idx * 120);
+        playMusicBoxNote(freq, 1.1, idx === 0 ? 261.63 : 0);
+      }, idx * 115);
     });
   }
 
-  function startMusicLoop() {
-    if (!isMusicPlaying) return;
-    const current = musicBoxMelody[currentNoteIndex];
-    playMusicBoxNote(current.note, current.dur);
-
-    currentNoteIndex = (currentNoteIndex + 1) % musicBoxMelody.length;
-    musicTimer = setTimeout(startMusicLoop, current.dur * 850);
+  function updateMusicButtonUI() {
+    if (!btnMusicToggle) return;
+    if (isMusicWanted) {
+      btnMusicToggle.classList.add('playing');
+      btnMusicToggle.setAttribute('aria-pressed', 'true');
+      btnMusicToggle.innerHTML = '<span>🎶</span> <span>Musik: ON</span>';
+    } else {
+      btnMusicToggle.classList.remove('playing');
+      btnMusicToggle.setAttribute('aria-pressed', 'false');
+      btnMusicToggle.innerHTML = '<span>🔇</span> <span>Musik: OFF</span>';
+    }
   }
 
-  const btnMusicToggle = document.getElementById('btnMusicToggle');
-  if (btnMusicToggle) {
-    btnMusicToggle.addEventListener('click', () => {
-      getAudioContext();
-      isMusicPlaying = !isMusicPlaying;
+  function startMusicLoop() {
+    if (!isMusicPlaying || !isMusicWanted) return;
+    const current = musicBoxMelody[currentNoteIndex];
+    playMusicBoxNote(current.note, current.dur, current.bass);
 
-      if (isMusicPlaying) {
-        btnMusicToggle.classList.add('playing');
-        btnMusicToggle.innerHTML = '<span>🎶</span> <span>Musik</span>';
-        currentNoteIndex = 0;
+    currentNoteIndex = (currentNoteIndex + 1) % musicBoxMelody.length;
+    musicTimer = setTimeout(startMusicLoop, current.dur * 820);
+  }
+
+  function stopMusicLoop() {
+    isMusicPlaying = false;
+    if (musicTimer) {
+      clearTimeout(musicTimer);
+      musicTimer = null;
+    }
+  }
+
+  function tryStartMusicOnInteraction(e) {
+    // If the user clicked the music toggle button itself, let the button handler manage it
+    if (e && btnMusicToggle && (e.target === btnMusicToggle || btnMusicToggle.contains(e.target))) {
+      return;
+    }
+
+    if (!isMusicWanted || isMusicPlaying) {
+      removeAutoStartListeners();
+      return;
+    }
+
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const startPlayback = () => {
+      if (ctx.state === 'running' && isMusicWanted && !isMusicPlaying) {
+        isMusicPlaying = true;
+        updateMusicButtonUI();
         startMusicLoop();
+        removeAutoStartListeners();
+      }
+    };
+
+    if (ctx.state === 'suspended') {
+      ctx.resume().then(startPlayback).catch(() => {
+        // Still waiting for a direct click/touch gesture if passive move was blocked
+      });
+    } else if (ctx.state === 'running') {
+      startPlayback();
+    }
+  }
+
+  const interactionEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown', 'scroll', 'mousemove'];
+
+  function addAutoStartListeners() {
+    interactionEvents.forEach(evt => {
+      window.addEventListener(evt, tryStartMusicOnInteraction, { passive: true });
+    });
+  }
+
+  function removeAutoStartListeners() {
+    interactionEvents.forEach(evt => {
+      window.removeEventListener(evt, tryStartMusicOnInteraction);
+    });
+  }
+
+  // Activate auto-start detection on page load
+  addAutoStartListeners();
+  // Also attempt immediate start in case browser allows autoplay right away
+  tryStartMusicOnInteraction();
+
+  // Manual ON / OFF Toggle Button
+  if (btnMusicToggle) {
+    btnMusicToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const ctx = getAudioContext();
+      isMusicWanted = !isMusicWanted;
+      updateMusicButtonUI();
+
+      if (isMusicWanted) {
+        if (ctx && ctx.state === 'suspended') {
+          ctx.resume().then(() => {
+            if (!isMusicPlaying) {
+              isMusicPlaying = true;
+              startMusicLoop();
+            }
+          });
+        } else {
+          if (!isMusicPlaying) {
+            isMusicPlaying = true;
+            startMusicLoop();
+          }
+        }
+        removeAutoStartListeners();
       } else {
-        btnMusicToggle.classList.remove('playing');
-        btnMusicToggle.innerHTML = '<span>🎵</span> <span>Musik</span>';
-        if (musicTimer) clearTimeout(musicTimer);
+        stopMusicLoop();
+        removeAutoStartListeners();
       }
     });
   }
 
   /* ==========================================================================
-     5. Make a Wish & Interactive Candle Blow
+     6. Make a Wish & Interactive Candle Blow
      ========================================================================== */
   const btnBlowCandle = document.getElementById('btnBlowCandle');
   const candleFlame = document.getElementById('candleFlame');
@@ -383,14 +562,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     6. Floating Emoji Reactions
+     7. Floating Emoji Reactions
      ========================================================================== */
   const reactionButtons = document.querySelectorAll('.btn-reaction');
   reactionButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       const emoji = btn.getAttribute('data-emoji') || '🩵';
       spawnFloatingEmoji(e.clientX, e.clientY, emoji);
-      playMusicBoxNote(587.33, 0.4);
+      playMusicBoxNote(587.33, 0.45);
     });
   });
 
@@ -422,7 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     7. Web Share API & Clipboard Copy Fallback
+     8. Web Share API & Clipboard Copy Fallback
      ========================================================================== */
   const btnShare = document.getElementById('btnShare');
   const toastAlert = document.getElementById('toastAlert');
@@ -492,7 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     8. ScrollSpy & Floating Back to Top Button
+     9. ScrollSpy & Floating Back to Top Button
      ========================================================================== */
   const floatingTopBtn = document.getElementById('floatingTopBtn');
   const btnScrollTopFooter = document.getElementById('btnScrollTopFooter');

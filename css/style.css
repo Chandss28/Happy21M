@@ -1,7 +1,7 @@
 /* ==========================================================================
-   BIRTHDAY M — 21st Scrapbook Digital Theme (Pink & Denim Blue Edition)
+   BIRTHDAY M — 21st Scrapbook Digital Theme (Lively Animated Pink & Blue)
    Mobile-First & Responsive Design System
-   Palette: Dusty Pink (#D98B98, #F4C7D0) & Denim Blue (#4A7C9D, #C7DFF0)
+   Palette: Dusty Pink (#D98B98, #F4B8C4) & Denim Blue (#4A7C9D, #A8CDE8)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -21,15 +21,15 @@
   --denim-700: #3b6582;
   --denim-primary: #4a7c9d;
   --denim-light: #6e9bb9;
-  --denim-soft: #cfe3f2;
-  --denim-pale: #e6f1f9;
+  --denim-soft: #c7e0f4;
+  --denim-pale: #e3f0fa;
 
   /* Dusty Pink Palette */
   --pink-primary: #d98b98;
   --pink-dark: #b56775;
   --pink-light: #e8a8b3;
-  --pink-soft: #f7dce2;
-  --pink-pale: #fceef1;
+  --pink-soft: #f7d4dd;
+  --pink-pale: #fcebf0;
 
   /* Ink / Text Colors */
   --ink-heading: #233544;
@@ -40,8 +40,8 @@
   /* Accents & Shadows */
   --gold-warm: #d4a359;
   --gold-soft: #fdf3df;
-  --shadow-polaroid: 0 14px 32px -6px rgba(42, 65, 90, 0.18), 0 6px 14px -3px rgba(181, 103, 117, 0.12);
-  --shadow-lifted: 0 22px 48px -8px rgba(35, 53, 68, 0.22), 0 8px 20px -4px rgba(181, 103, 117, 0.15);
+  --shadow-polaroid: 0 14px 32px -6px rgba(42, 65, 90, 0.2), 0 6px 14px -3px rgba(181, 103, 117, 0.15);
+  --shadow-lifted: 0 22px 48px -8px rgba(35, 53, 68, 0.24), 0 8px 20px -4px rgba(181, 103, 117, 0.18);
   --shadow-subtle: 0 4px 14px rgba(0, 0, 0, 0.06);
 
   /* Typography */
@@ -63,7 +63,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Reset & Pink + Blue Theme Background (iOS & Android Mobile Safe)
+   2. Reset & Lively Animated Pink + Blue Theme Background
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -81,7 +81,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: #f3e4ea;
+  background-color: #f2d4df;
   color: var(--ink-body);
   line-height: 1.68;
   overflow-x: hidden;
@@ -90,21 +90,21 @@ body {
   min-height: 100dvh;
 }
 
-/* Fixed Mobile-Safe Pink & Blue Gradient + Orbs Layer (Smooth 60fps on iOS/Android) */
+/* Fixed Mobile-Safe Rich Pink & Blue Gradient + Floating Layer */
 .bg-decor-layer {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  background-color: #f4dce3;
+  background-color: #f3d2de;
   background-image:
-    radial-gradient(circle at 8% 12%, rgba(217, 139, 152, 0.48) 0%, transparent 45%),
-    radial-gradient(circle at 92% 18%, rgba(74, 124, 157, 0.44) 0%, transparent 48%),
-    radial-gradient(circle at 15% 58%, rgba(74, 124, 157, 0.38) 0%, transparent 50%),
-    radial-gradient(circle at 88% 65%, rgba(217, 139, 152, 0.46) 0%, transparent 48%),
-    radial-gradient(circle at 50% 92%, rgba(74, 124, 157, 0.4) 0%, transparent 52%),
-    linear-gradient(135deg, #f9dbe3 0%, #e1eef9 32%, #f7dfe6 65%, #d3e7f6 100%);
+    radial-gradient(circle at 12% 15%, rgba(226, 128, 148, 0.65) 0%, transparent 45%),
+    radial-gradient(circle at 88% 16%, rgba(82, 142, 184, 0.62) 0%, transparent 46%),
+    radial-gradient(circle at 14% 62%, rgba(82, 142, 184, 0.55) 0%, transparent 48%),
+    radial-gradient(circle at 86% 68%, rgba(226, 128, 148, 0.62) 0%, transparent 48%),
+    radial-gradient(circle at 50% 90%, rgba(92, 150, 190, 0.52) 0%, transparent 52%),
+    linear-gradient(135deg, #f8c6d4 0%, #cbe3f6 33%, #f7cbd8 67%, #bedbf2 100%);
 }
 
 /* Dual-tone Pink & Blue Scrapbook Paper Grid + Polka Texture */
@@ -113,12 +113,12 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(rgba(217, 139, 152, 0.17) 1.25px, transparent 1.25px),
-    radial-gradient(rgba(74, 124, 157, 0.16) 1.25px, transparent 1.25px),
-    linear-gradient(rgba(74, 124, 157, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(217, 139, 152, 0.06) 1px, transparent 1px);
-  background-size: 36px 36px, 36px 36px, 28px 28px, 28px 28px;
-  background-position: 0 0, 18px 18px, 0 0, 0 0;
+    radial-gradient(rgba(217, 115, 134, 0.24) 1.6px, transparent 1.6px),
+    radial-gradient(rgba(64, 118, 155, 0.22) 1.6px, transparent 1.6px),
+    linear-gradient(rgba(74, 124, 157, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 139, 152, 0.08) 1px, transparent 1px);
+  background-size: 38px 38px, 38px 38px, 28px 28px, 28px 28px;
+  background-position: 0 0, 19px 19px, 0 0, 0 0;
   pointer-events: none;
   z-index: 0;
 }
@@ -130,7 +130,7 @@ body::after {
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
+  height: 7px;
   background: repeating-linear-gradient(
     90deg,
     var(--pink-primary) 0px,
@@ -143,55 +143,201 @@ body::after {
     #ffffff 72px
   );
   z-index: 999;
-  box-shadow: 0 2px 8px rgba(42, 76, 102, 0.15);
+  box-shadow: 0 2px 10px rgba(42, 76, 102, 0.18);
 }
 
+/* Animated Drifting Color Orbs */
 .bg-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(55px);
-  opacity: 0.55;
+  filter: blur(45px);
+  opacity: 0.72;
+  will-change: transform;
 }
 
 .bg-orb-pink-1 {
-  width: 380px;
-  height: 380px;
-  top: -80px;
-  left: -90px;
-  background: radial-gradient(circle, #eca2b0 0%, rgba(236, 162, 176, 0) 70%);
+  width: 420px;
+  height: 420px;
+  top: -70px;
+  left: -80px;
+  background: radial-gradient(circle, #ea8fa2 0%, rgba(234, 143, 162, 0) 70%);
+  animation: orbDrift1 14s ease-in-out infinite alternate;
 }
 
 .bg-orb-blue-1 {
-  width: 420px;
-  height: 420px;
-  top: 40px;
-  right: -110px;
-  background: radial-gradient(circle, #7fb2d3 0%, rgba(127, 178, 211, 0) 70%);
+  width: 450px;
+  height: 450px;
+  top: 20px;
+  right: -100px;
+  background: radial-gradient(circle, #6da8d1 0%, rgba(109, 168, 209, 0) 70%);
+  animation: orbDrift2 16s ease-in-out infinite alternate;
 }
 
 .bg-orb-pink-2 {
-  width: 440px;
-  height: 440px;
-  bottom: 12%;
-  right: -100px;
-  background: radial-gradient(circle, #eba0ae 0%, rgba(235, 160, 174, 0) 70%);
+  width: 460px;
+  height: 460px;
+  bottom: 8%;
+  right: -90px;
+  background: radial-gradient(circle, #e88d9f 0%, rgba(232, 141, 159, 0) 70%);
+  animation: orbDrift1 18s ease-in-out infinite alternate-reverse;
 }
 
 .bg-orb-blue-2 {
-  width: 400px;
-  height: 400px;
-  bottom: -90px;
-  left: -80px;
-  background: radial-gradient(circle, #82b4d4 0%, rgba(130, 180, 212, 0) 70%);
+  width: 430px;
+  height: 430px;
+  bottom: -80px;
+  left: -70px;
+  background: radial-gradient(circle, #70aad2 0%, rgba(112, 170, 210, 0) 70%);
+  animation: orbDrift2 15s ease-in-out infinite alternate-reverse;
 }
 
 .bg-orb-center {
-  width: 520px;
-  height: 520px;
-  top: 42%;
+  width: 560px;
+  height: 560px;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, rgba(236, 162, 176, 0.38), rgba(127, 178, 211, 0.38));
+  background: linear-gradient(135deg, rgba(236, 142, 162, 0.45), rgba(105, 165, 207, 0.45));
+  animation: orbPulseCenter 12s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(45px, 35px) scale(1.1); }
+  100% { transform: translate(-25px, 65px) scale(0.95); }
+}
+
+@keyframes orbDrift2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, 40px) scale(1.08); }
+  100% { transform: translate(30px, -45px) scale(0.94); }
+}
+
+@keyframes orbPulseCenter {
+  0% { transform: translate(-50%, -50%) scale(0.92) rotate(0deg); }
+  100% { transform: translate(-46%, -54%) scale(1.12) rotate(18deg); }
+}
+
+/* Decorative Floating Scrapbook Stickers in Background */
+.bg-floating-sticker {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.58;
+  filter: drop-shadow(0 6px 14px rgba(42, 76, 102, 0.14));
+  will-change: transform;
+}
+
+.bg-sticker-1 {
+  top: 12%;
+  left: 3.5%;
+  width: 68px;
+  animation: stickerFloatA 7s ease-in-out infinite alternate;
+}
+
+.bg-sticker-2 {
+  top: 18%;
+  right: 4%;
+  width: 72px;
+  animation: stickerFloatB 8.5s ease-in-out infinite alternate;
+}
+
+.bg-sticker-3 {
+  top: 52%;
+  left: 2.5%;
+  width: 66px;
+  animation: stickerFloatB 9s ease-in-out infinite alternate-reverse;
+}
+
+.bg-sticker-4 {
+  top: 58%;
+  right: 3%;
+  width: 64px;
+  animation: stickerFloatA 7.8s ease-in-out infinite alternate;
+}
+
+.bg-sticker-5 {
+  bottom: 10%;
+  left: 5%;
+  width: 60px;
+  animation: stickerFloatA 8.2s ease-in-out infinite alternate-reverse;
+}
+
+.bg-sticker-6 {
+  bottom: 12%;
+  right: 5%;
+  width: 62px;
+  animation: stickerFloatB 7.4s ease-in-out infinite alternate;
+}
+
+@keyframes stickerFloatA {
+  0% { transform: translateY(0px) translateX(0px) rotate(-12deg) scale(1); }
+  50% { transform: translateY(-22px) translateX(10px) rotate(6deg) scale(1.06); }
+  100% { transform: translateY(14px) translateX(-8px) rotate(-16deg) scale(0.97); }
+}
+
+@keyframes stickerFloatB {
+  0% { transform: translateY(0px) translateX(0px) rotate(10deg) scale(1); }
+  50% { transform: translateY(20px) translateX(-12px) rotate(-8deg) scale(1.05); }
+  100% { transform: translateY(-18px) translateX(8px) rotate(15deg) scale(0.98); }
+}
+
+/* Continuous Floating Background Particles (Hearts, Blossoms, Ribbons, Glowing Bubbles) */
+.bg-floating-items {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-floater {
+  position: absolute;
+  bottom: -60px;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation-name: floatUpAndSway;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.bg-floater-bubble {
+  border-radius: 50%;
+  backdrop-filter: blur(1px);
+}
+
+.bg-floater-bubble.bubble-pink {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.85), rgba(217, 139, 152, 0.55));
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 12px rgba(217, 139, 152, 0.3);
+}
+
+.bg-floater-bubble.bubble-blue {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.85), rgba(74, 124, 157, 0.52));
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 12px rgba(74, 124, 157, 0.3);
+}
+
+@keyframes floatUpAndSway {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--floater-opacity, 0.7);
+  }
+  35% {
+    transform: translateY(-35vh) translateX(var(--sway-x, 28px)) rotate(120deg) scale(1);
+  }
+  68% {
+    transform: translateY(-70vh) translateX(calc(var(--sway-x, 28px) * -0.8)) rotate(240deg) scale(1.05);
+  }
+  88% {
+    opacity: var(--floater-opacity, 0.7);
+  }
+  100% {
+    transform: translateY(-112vh) translateX(var(--sway-x, 28px)) rotate(360deg) scale(0.9);
+    opacity: 0;
+  }
 }
 
 img {
@@ -315,7 +461,7 @@ a {
   color: var(--denim-900);
   line-height: 1.18;
   margin-bottom: 0.6rem;
-  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.7);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.75);
 }
 
 .section-subtitle {
@@ -379,7 +525,7 @@ a {
   transform: rotate(14deg);
 }
 
-/* Floating Scrapbook Sticker Accents */
+/* Floating Scrapbook Sticker Accents on Hero Card */
 .scrapbook-sticker {
   position: absolute;
   pointer-events: none;
@@ -428,12 +574,12 @@ a {
   align-items: center;
   gap: 0.35rem;
   padding: 0.42rem 0.6rem;
-  background: linear-gradient(135deg, rgba(255, 246, 248, 0.95), rgba(242, 248, 253, 0.95));
+  background: linear-gradient(135deg, rgba(255, 246, 248, 0.96), rgba(242, 248, 253, 0.96));
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(217, 139, 152, 0.48);
+  border: 1.5px solid rgba(217, 139, 152, 0.55);
   border-radius: var(--radius-pill);
-  box-shadow: 0 10px 30px -4px rgba(42, 76, 102, 0.18), 0 2px 10px rgba(217, 139, 152, 0.15);
+  box-shadow: 0 10px 30px -4px rgba(42, 76, 102, 0.2), 0 2px 10px rgba(217, 139, 152, 0.18);
   transition: var(--transition-normal);
   max-width: 100%;
   overflow-x: auto;
@@ -470,20 +616,21 @@ a {
   align-items: center;
   gap: 0.35rem;
   background: #ffffff;
-  color: var(--denim-900);
+  color: var(--ink-muted);
   font-size: 0.85rem;
   font-weight: 600;
   padding: 0.45rem 0.85rem;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(74, 124, 157, 0.35);
+  border: 1.5px solid rgba(74, 124, 157, 0.35);
   transition: var(--transition-fast);
   white-space: nowrap;
 }
 
 .nav-btn-music.playing {
-  background: var(--pink-soft);
-  color: var(--pink-dark);
+  background: linear-gradient(135deg, var(--pink-soft), var(--denim-soft));
+  color: var(--denim-900);
   border-color: var(--pink-primary);
+  box-shadow: 0 2px 8px rgba(217, 139, 152, 0.25);
 }
 
 .nav-btn-music:hover {
@@ -524,11 +671,11 @@ a {
   grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
   gap: 3.25rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.82) 0%, rgba(252, 236, 241, 0.86) 50%, rgba(226, 239, 250, 0.88) 100%);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.92);
-  outline: 2px dashed rgba(217, 139, 152, 0.45);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.86) 0%, rgba(253, 232, 239, 0.88) 50%, rgba(220, 238, 252, 0.88) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.94);
+  outline: 2px dashed rgba(217, 139, 152, 0.5);
   outline-offset: -10px;
   border-radius: 28px;
   padding: 3rem 2.75rem;
@@ -1425,7 +1572,7 @@ a {
   padding: 2.25rem 0 calc(3.25rem + env(safe-area-inset-bottom, 0px));
   text-align: center;
   border-top: 2px dashed rgba(74, 124, 157, 0.3);
-  background: linear-gradient(90deg, rgba(247, 220, 226, 0.55), rgba(255, 255, 255, 0.65), rgba(207, 227, 242, 0.55));
+  background: linear-gradient(90deg, rgba(247, 220, 226, 0.65), rgba(255, 255, 255, 0.72), rgba(207, 227, 242, 0.65));
   position: relative;
   z-index: 1;
 }
@@ -1598,6 +1745,11 @@ a {
     padding-right: 0.95rem;
   }
 
+  .bg-floating-sticker {
+    width: 46px !important;
+    opacity: 0.48;
+  }
+
   .site-nav-wrapper {
     top: 0.65rem;
     padding: 0 0.5rem;
@@ -1610,13 +1762,13 @@ a {
 
   .nav-link {
     font-size: 0.76rem;
-    padding: 0.38rem 0.6rem;
+    padding: 0.38rem 0.58rem;
   }
 
   .nav-btn-music,
   .nav-btn-confetti {
     font-size: 0.76rem;
-    padding: 0.38rem 0.68rem;
+    padding: 0.38rem 0.65rem;
   }
 
   .hero-section {
